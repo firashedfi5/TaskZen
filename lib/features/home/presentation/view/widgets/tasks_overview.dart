@@ -7,20 +7,23 @@ class TasksOverview extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: Styles.textStyle24.copyWith(fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 10),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.22,
-            child: const TaskListView(),
-          ),
-        ],
+    return SliverPadding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      sliver: SliverToBoxAdapter(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: Styles.textStyle24.copyWith(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.22,
+              child: const TaskListView(),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -10,7 +10,8 @@ class TasksListViewItem extends StatelessWidget {
       aspectRatio: 3 / 3,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.blueAccent,
+          color: Colors.blueAccent.withAlpha(65),
+          border: Border.all(width: 1, color: Colors.black),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Padding(
@@ -20,19 +21,18 @@ class TasksListViewItem extends StatelessWidget {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.white38,
-                  // border: Border.all(color: Colors.black, width: 1),
+                  color: Colors.greenAccent.withAlpha(150),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 3.5, vertical: 1),
-                  child: Text('HIGH', style: Styles.textStyle12),
+                  padding: EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+                  child: Text('HIGH', style: Styles.textStyle11),
                 ),
               ),
               const SizedBox(height: 8),
               Text(
                 'Team Meating',
-                style: Styles.textStyle18.copyWith(fontWeight: FontWeight.bold),
+                style: Styles.textStyle18.copyWith(fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 10),
               const Text(

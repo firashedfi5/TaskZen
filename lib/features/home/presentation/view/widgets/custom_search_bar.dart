@@ -5,11 +5,11 @@ class CustomSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: SizedBox(
-        height: 55,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
+    return SliverPadding(
+      padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
+      sliver: SliverToBoxAdapter(
+        child: SizedBox(
+          height: 45,
           child: SearchBar(
             shadowColor: const WidgetStatePropertyAll(Colors.transparent),
             leading: const Icon(Icons.search),

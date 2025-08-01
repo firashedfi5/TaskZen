@@ -6,16 +6,19 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text('Hey there,', style: Styles.textStyle16),
-          Text(
-            'Keep it Going!',
-            style: Styles.textStyle18.copyWith(fontWeight: FontWeight.bold),
-          ),
-        ],
+    return SliverPadding(
+      padding: const EdgeInsets.only(bottom: 10),
+      sliver: SliverAppBar(
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('Hey there,', style: Styles.textStyle16),
+            Text(
+              'Keep it Going!',
+              style: Styles.textStyle18.copyWith(fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
       ),
     );
   }
