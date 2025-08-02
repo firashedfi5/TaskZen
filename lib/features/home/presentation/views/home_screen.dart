@@ -6,6 +6,13 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: HomeScreenBody());
+    return Scaffold(
+      body: const HomeScreenBody(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.blue,
+        child: const Icon(Icons.add, size: 34, color: Colors.white),
+      ),
+    );
   }
 }
