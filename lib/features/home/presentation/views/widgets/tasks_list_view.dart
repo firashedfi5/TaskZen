@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_management_app/features/home/presentation/view/widgets/tasks_list_view_item.dart';
+import 'package:task_management_app/features/home/presentation/views/widgets/tasks_list_view_item.dart';
 
 class TaskListView extends StatelessWidget {
   const TaskListView({super.key});

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:task_management_app/features/home/presentation/view/widgets/custom_app_bar.dart';
-import 'package:task_management_app/features/home/presentation/view/widgets/custom_search_bar.dart';
-import 'package:task_management_app/features/home/presentation/view/widgets/status_bar.dart';
-import 'package:task_management_app/features/home/presentation/view/widgets/tasks_number.dart';
-import 'package:task_management_app/features/home/presentation/view/widgets/tasks_overview.dart';
+import 'package:task_management_app/features/home/presentation/views/widgets/custom_app_bar.dart';
+import 'package:task_management_app/features/home/presentation/views/widgets/custom_search_bar.dart';
+import 'package:task_management_app/features/home/presentation/views/widgets/status_bar.dart';
+import 'package:task_management_app/features/home/presentation/views/widgets/tasks_number.dart';
+import 'package:task_management_app/features/home/presentation/views/widgets/tasks_overview.dart';
 
 class HomeScreenBody extends StatelessWidget {
   const HomeScreenBody({super.key});

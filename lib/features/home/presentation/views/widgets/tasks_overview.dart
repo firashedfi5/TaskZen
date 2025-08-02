@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_management_app/core/utils/styles.dart';
-import 'package:task_management_app/features/home/presentation/view/widgets/tasks_list_view.dart';
+import 'package:task_management_app/features/home/presentation/views/widgets/tasks_list_view.dart';
 
 class TasksOverview extends StatelessWidget {
   const TasksOverview({super.key, required this.title});

@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:task_management_app/features/calendar/presentation/views/calendar_screen.dart';
-import 'package:task_management_app/features/home/presentation/view/home_screen.dart';
+import 'package:task_management_app/features/home/presentation/views/home_screen.dart';
 
 abstract class AppRouter {
   static const String kCalendarScreen = '/calendarScreen';
