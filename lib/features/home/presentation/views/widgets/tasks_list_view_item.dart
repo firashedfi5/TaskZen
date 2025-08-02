@@ -19,7 +19,7 @@ class TasksListViewItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: kSecondaryColor.withAlpha(65),
-          border: Border.all(width: 1, color: Colors.black),
+          // border: Border.all(width: 1, color: Colors.black),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Padding(
