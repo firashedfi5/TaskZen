@@ -12,7 +12,7 @@ class TaskListView extends StatelessWidget {
       itemCount: 5,
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
-        return const TasksListViewItem();
+        return const TasksListViewItem(aspectRatio: 3 / 3, maxLines: 2);
       },
     );
   }

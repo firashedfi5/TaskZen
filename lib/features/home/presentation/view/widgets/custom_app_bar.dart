@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:task_management_app/core/utils/app_router.dart';
 import 'package:task_management_app/core/utils/styles.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -19,6 +21,13 @@ class CustomAppBar extends StatelessWidget {
             ),
           ],
         ),
+        actions: [
+          IconButton(
+            onPressed: () =>
+                GoRouter.of(context).push(AppRouter.kCalendarScreen),
+            icon: const Icon(Icons.sunny),
+          ),
+        ],
       ),
     );
   }
