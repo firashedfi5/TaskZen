@@ -17,7 +17,7 @@ class TaskRepoImpl implements TaskRepo {
   ) async {
     try {
       final requestData = {'task': task.toJson(), 'userId': userId};
-      await apiService.post(endPoint: 'tasks/create', data: requestData);
+      await apiService.post(endPoint: '/create-task', data: requestData);
       return right(unit);
     } catch (e) {
       if (e is DioException) {

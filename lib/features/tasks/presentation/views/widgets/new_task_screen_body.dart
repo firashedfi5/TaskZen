@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/core/utils/styles.dart';
+import 'package:task_management_app/features/tasks/data/models/task_model.dart';
+import 'package:task_management_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
 import 'package:task_management_app/features/tasks/presentation/views/widgets/add_task_button.dart';
 import 'package:task_management_app/features/tasks/presentation/views/widgets/choose_date.dart';
 import 'package:task_management_app/features/tasks/presentation/views/widgets/custom_text_form_field.dart';
@@ -52,7 +55,17 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
               const SizedBox(height: 20),
               const Priority(),
               const SizedBox(height: 20),
-              const AddTaskButton(),
+              AddTaskButton(
+                createTask: () {
+                  BlocProvider.of<TaskCubit>(context).createTask(
+                    task: TaskModel(
+                      title: titleController.text,
+                      description: descriptionController.text,
+                    ),
+                    userId: '22435898',
+                  );
+                },
+              ),
             ],
           ),
         ),

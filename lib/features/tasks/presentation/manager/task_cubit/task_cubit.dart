@@ -10,7 +10,7 @@ class TaskCubit extends Cubit<TaskState> {
 
   final TaskRepo taskRepo;
 
-  Future<void> createTask(TaskModel task, String userId) async {
+  Future<void> createTask({required TaskModel task,required String userId}) async {
     emit(TaskLoading());
     var result = await taskRepo.createTask(task, userId);
     result.fold(
