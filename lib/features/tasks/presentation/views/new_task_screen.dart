@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:task_management_app/core/utils/service_locator.dart';
+import 'package:task_management_app/features/tasks/data/repos/task_repo_impl.dart';
+import 'package:task_management_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
 import 'package:task_management_app/features/tasks/presentation/views/widgets/new_task_screen_body.dart';
 
 class NewTaskScreen extends StatelessWidget {
@@ -6,9 +10,12 @@ class NewTaskScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('New task')),
-      body: const NewTaskScreenBody(),
+    return BlocProvider(
+      create: (context) => TaskCubit(getIt.get<TaskRepoImpl>()),
+      child: Scaffold(
+        appBar: AppBar(title: const Text('New task')),
+        body: const NewTaskScreenBody(),
+      ),
     );
   }
 }
