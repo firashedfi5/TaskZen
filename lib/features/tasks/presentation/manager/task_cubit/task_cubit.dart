@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
@@ -10,12 +12,15 @@ class TaskCubit extends Cubit<TaskState> {
 
   final TaskRepo taskRepo;
 
-  Future<void> createTask({required TaskModel task,required String userId}) async {
+  Future<void> createTask({
+    required TaskModel task,
+    required String userId,
+  }) async {
     emit(TaskLoading());
     var result = await taskRepo.createTask(task, userId);
-    result.fold(
-      (failure) => emit(TaskFailure(failure.message)),
-      (success) => emit(TaskSuccess()),
-    );
+    result.fold((failure) => emit(TaskFailure(failure.message)), (success) {
+      log('Task created successfully');
+      emit(TaskSuccess());
+    });
   }
 }

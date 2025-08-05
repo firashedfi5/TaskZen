@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:task_management_app/core/errors/failure.dart';
@@ -15,9 +17,9 @@ class TaskRepoImpl implements TaskRepo {
     TaskModel task,
     String userId,
   ) async {
+    log('Task data: ${task.toJson()}');
     try {
-      final requestData = {'task': task.toJson(), 'userId': userId};
-      await apiService.post(endPoint: '/create-task', data: requestData);
+      await apiService.post(endPoint: '/create-task', data: task.toJson());
       return right(unit);
     } catch (e) {
       if (e is DioException) {

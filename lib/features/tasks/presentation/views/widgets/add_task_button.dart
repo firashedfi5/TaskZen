@@ -5,7 +5,7 @@ import 'package:task_management_app/core/utils/styles.dart';
 class AddTaskButton extends StatelessWidget {
   const AddTaskButton({super.key, required this.createTask});
 
-  final void Function() createTask;
+  final VoidCallback createTask;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class AddTaskButton extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
         textStyle: Styles.textStyle16,
       ),
-      onPressed: () {},
+      onPressed: createTask,
       child: const Text('Add Task'),
     );
   }

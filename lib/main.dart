@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/core/utils/app_router.dart';
 import 'package:task_management_app/core/utils/service_locator.dart';
+import 'package:task_management_app/core/utils/simple_bloc_observer.dart';
 
 void main() {
+  Bloc.observer = SimpleBlocObserver();
   setup();
   runApp(const MyApp());
 }
