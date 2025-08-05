@@ -1,5 +1,6 @@
 class TaskModel {
   final int? id;
+  final String? userId;
   final String? title;
   final String? description;
   final String? priority;
@@ -9,6 +10,7 @@ class TaskModel {
 
   TaskModel({
     this.id,
+    this.userId,
     this.title,
     this.description,
     this.priority,
@@ -19,6 +21,7 @@ class TaskModel {
 
   factory TaskModel.fromJson(Map<String, dynamic> json) => TaskModel(
     id: json['id'] as int?,
+    userId: json['userId'] as String?,
     title: json['title'] as String?,
     description: json['description'] as String?,
     priority: json['priority'] as String?,
