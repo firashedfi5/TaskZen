@@ -5,16 +5,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 import 'package:task_management_app/features/tasks/data/repos/task_repo.dart';
 
-part 'task_state.dart';
+part 'new_task_state.dart';
 
-class TaskCubit extends Cubit<TaskState> {
-  TaskCubit(this.taskRepo) : super(TaskInitial());
+class NewTaskCubit extends Cubit<NewTaskState> {
+  NewTaskCubit(this.taskRepo) : super(TaskInitial());
 
   final TaskRepo taskRepo;
+  String priority = 'Low';
 
-  Future<void> createTask({
-    required TaskModel task,
-  }) async {
+  Future<void> createTask({required TaskModel task}) async {
     emit(TaskLoading());
     var result = await taskRepo.createTask(task);
     result.fold((failure) => emit(TaskFailure(failure.message)), (success) {

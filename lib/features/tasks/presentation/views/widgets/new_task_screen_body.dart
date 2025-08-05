@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:task_management_app/core/utils/functions/custom_snack_bar.dart';
 import 'package:task_management_app/core/utils/styles.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
-import 'package:task_management_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
+import 'package:task_management_app/features/tasks/presentation/manager/new_task_cubit/new_task_cubit.dart';
 import 'package:task_management_app/features/tasks/presentation/views/widgets/add_task_button.dart';
 import 'package:task_management_app/features/tasks/presentation/views/widgets/choose_date.dart';
 import 'package:task_management_app/features/tasks/presentation/views/widgets/custom_text_form_field.dart';
@@ -31,7 +31,7 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<TaskCubit, TaskState>(
+    return BlocListener<NewTaskCubit, NewTaskState>(
       listener: (context, state) {
         if (state is TaskLoading) {
           showDialog(
@@ -85,13 +85,17 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
                 const SizedBox(height: 20),
                 AddTaskButton(
                   createTask: () {
-                    BlocProvider.of<TaskCubit>(context).createTask(
+                    String priority = BlocProvider.of<NewTaskCubit>(
+                      context,
+                    ).priority;
+
+                    BlocProvider.of<NewTaskCubit>(context).createTask(
                       task: TaskModel(
                         id: 1,
                         userId: 'SiFiras',
                         title: titleController.text,
                         description: descriptionController.text,
-                        priority: 'High',
+                        priority: priority,
                       ),
                     );
                   },
