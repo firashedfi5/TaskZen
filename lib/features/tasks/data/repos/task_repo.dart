@@ -10,10 +10,7 @@ abstract class TaskRepo {
   ); //* / GET /tasks/:id
 
   //TODO: First method to implement
-  Future<Either<Failure, Unit>> createTask(
-    TaskModel task,
-    String userId,
-  ); //* POST /tasks/:userId
+  Future<Either<Failure, Unit>> createTask(TaskModel task); //* POST /tasks
 
   Future<Either<Failure, TaskModel>> updateTask(
     int id,

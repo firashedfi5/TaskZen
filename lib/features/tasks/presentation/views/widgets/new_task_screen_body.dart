@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:task_management_app/core/utils/functions/custom_snack_bar.dart';
 import 'package:task_management_app/core/utils/styles.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 import 'package:task_management_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
@@ -42,15 +43,18 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
         } else if (state is TaskSuccess) {
           Navigator.of(context).pop();
           GoRouter.of(context).pop();
-
-          // ScaffoldMessenger.of(
-          //   context,
-          // ).showSnackBar(SnackBar(content: Text('Task created successfully!')));
+          customSnackBar(
+            context: context,
+            errMessage: 'Task created successfully!',
+            success: true,
+          );
         } else if (state is TaskFailure) {
           Navigator.of(context).pop();
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text('Error: ${state.errMessage}')));
+          customSnackBar(
+            context: context,
+            errMessage: state.errMessage,
+            success: false,
+          );
         }
       },
       child: SingleChildScrollView(
@@ -60,7 +64,7 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Choose Day', style: Styles.textStyle18),
+                const Text('Select Date', style: Styles.textStyle18),
                 const ChooseDate(),
                 const SizedBox(height: 20),
                 CustomTextFormField(
@@ -83,10 +87,12 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
                   createTask: () {
                     BlocProvider.of<TaskCubit>(context).createTask(
                       task: TaskModel(
+                        id: 1,
+                        userId: 'SiFiras',
                         title: titleController.text,
                         description: descriptionController.text,
+                        priority: 'High',
                       ),
-                      userId: '22435898',
                     );
                   },
                 ),
@@ -98,10 +104,3 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
     );
   }
 }
-// BlocProvider.of<TaskCubit>(context).createTask(
-//                       task: TaskModel(
-//                         title: titleController.text,
-//                         description: descriptionController.text,
-//                       ),
-//                       userId: '22435898',
-//                     )

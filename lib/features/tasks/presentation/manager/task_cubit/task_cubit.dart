@@ -14,10 +14,9 @@ class TaskCubit extends Cubit<TaskState> {
 
   Future<void> createTask({
     required TaskModel task,
-    required String userId,
   }) async {
     emit(TaskLoading());
-    var result = await taskRepo.createTask(task, userId);
+    var result = await taskRepo.createTask(task);
     result.fold((failure) => emit(TaskFailure(failure.message)), (success) {
       log('Task created successfully');
       emit(TaskSuccess());

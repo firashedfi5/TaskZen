@@ -13,10 +13,7 @@ class TaskRepoImpl implements TaskRepo {
   TaskRepoImpl(this.apiService);
 
   @override
-  Future<Either<Failure, Unit>> createTask(
-    TaskModel task,
-    String userId,
-  ) async {
+  Future<Either<Failure, Unit>> createTask(TaskModel task) async {
     log('Task data: ${task.toJson()}');
     try {
       await apiService.post(endPoint: '/create-task', data: task.toJson());
