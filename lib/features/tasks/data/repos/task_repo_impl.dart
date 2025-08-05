@@ -1,12 +1,30 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:task_management_app/core/errors/failure.dart';
+import 'package:task_management_app/core/utils/api_service.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 import 'package:task_management_app/features/tasks/data/repos/task_repo.dart';
 
 class TaskRepoImpl implements TaskRepo {
+  final ApiService apiService;
+
+  TaskRepoImpl(this.apiService);
+
   @override
-  Future<Either<Failure, TaskModel>> createTask(TaskModel task, String userId) {
-    throw UnimplementedError();
+  Future<Either<Failure, Unit>> createTask(
+    TaskModel task,
+    String userId,
+  ) async {
+    try {
+      final requestData = {'task': task.toJson(), 'userId': userId};
+      await apiService.post(endPoint: 'tasks/create', data: requestData);
+      return right(unit);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
   }
 
   @override

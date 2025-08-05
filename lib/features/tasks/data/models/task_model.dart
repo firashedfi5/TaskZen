@@ -29,4 +29,17 @@ class TaskModel {
     startTime: json['startTime'] as DateTime?,
     endTime: json['endTime'] as DateTime?,
   );
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'userId': userId,
+      'title': title,
+      'description': description,
+      'priority': priority,
+      // 'date': date?.toIso8601String(),
+      // 'startTime': startTime?.toIso8601String(),
+      // 'endTime': endTime?.toIso8601String(),
+    };
+  }
 }
