@@ -7,16 +7,24 @@ class CustomTextFormField extends StatelessWidget {
     required this.titleController,
     required this.maxLines,
     required this.name,
+    required this.validationText,
   });
 
   final TextEditingController titleController;
   final int maxLines;
   final String name;
+  final String validationText;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: titleController,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return validationText;
+        }
+        return null;
+      },
       decoration: InputDecoration(
         floatingLabelBehavior: FloatingLabelBehavior.always,
         labelText: name,

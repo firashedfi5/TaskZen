@@ -21,6 +21,7 @@ class NewTaskScreenBody extends StatefulWidget {
 class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -61,6 +62,7 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Form(
+            key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -71,12 +73,14 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
                   name: 'Title',
                   titleController: titleController,
                   maxLines: 1,
+                  validationText: 'Please enter a title',
                 ),
                 const SizedBox(height: 20),
                 CustomTextFormField(
                   name: 'Description',
                   titleController: descriptionController,
                   maxLines: 3,
+                  validationText: 'Please enter a description',
                 ),
                 const SizedBox(height: 20),
                 const Time(),
@@ -85,19 +89,22 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
                 const SizedBox(height: 20),
                 AddTaskButton(
                   createTask: () {
-                    String priority = BlocProvider.of<NewTaskCubit>(
-                      context,
-                    ).priority;
+                    final isValid = _formKey.currentState!.validate();
+                    if (isValid) {
+                      String priority = BlocProvider.of<NewTaskCubit>(
+                        context,
+                      ).priority;
 
-                    BlocProvider.of<NewTaskCubit>(context).createTask(
-                      task: TaskModel(
-                        id: 1,
-                        userId: 'SiFiras',
-                        title: titleController.text,
-                        description: descriptionController.text,
-                        priority: priority,
-                      ),
-                    );
+                      BlocProvider.of<NewTaskCubit>(context).createTask(
+                        task: TaskModel(
+                          id: 1,
+                          userId: 'SiFiras',
+                          title: titleController.text,
+                          description: descriptionController.text,
+                          priority: priority,
+                        ),
+                      );
+                    }
                   },
                 ),
               ],
