@@ -7,7 +7,10 @@ void customSnackBar({
 }) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
-      content: Text(errMessage),
+      content: Text(
+        errMessage,
+        style: const TextStyle(fontWeight: FontWeight.bold),
+      ),
       behavior: SnackBarBehavior.floating,
       backgroundColor: success == true ? Colors.green : Colors.red,
     ),

@@ -46,7 +46,7 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
           GoRouter.of(context).pop();
           customSnackBar(
             context: context,
-            errMessage: 'Task created successfully!',
+            errMessage: state.successMessage,
             success: true,
           );
         } else if (state is TaskFailure) {
