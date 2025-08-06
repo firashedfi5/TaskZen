@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:task_management_app/core/utils/functions/custom_snack_bar.dart';
+import 'package:task_management_app/core/utils/service_locator.dart';
 import 'package:task_management_app/core/utils/styles.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 import 'package:task_management_app/features/tasks/presentation/manager/new_task_cubit/new_task_cubit.dart';
@@ -10,6 +11,7 @@ import 'package:task_management_app/features/tasks/presentation/views/widgets/ch
 import 'package:task_management_app/features/tasks/presentation/views/widgets/custom_text_form_field.dart';
 import 'package:task_management_app/features/tasks/presentation/views/widgets/priority.dart';
 import 'package:task_management_app/features/tasks/presentation/views/widgets/time.dart';
+import 'package:uuid/uuid.dart';
 
 class NewTaskScreenBody extends StatefulWidget {
   const NewTaskScreenBody({super.key});
@@ -22,6 +24,7 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  // var uuid = const Uuid();
 
   @override
   void dispose() {
@@ -107,7 +110,7 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
                       BlocProvider.of<NewTaskCubit>(context).createTask(
                         task: TaskModel(
                           id: 1,
-                          userId: 'SiFiras',
+                          userId: getIt.get<Uuid>().v4(),
                           title: titleController.text,
                           description: descriptionController.text,
                           priority: priority,
