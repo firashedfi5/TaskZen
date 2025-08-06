@@ -14,7 +14,7 @@ class Time extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Start Time', style: Styles.textStyle18),
-            TimePickerButton(),
+            TimePickerButton(startTime: true,),
           ],
         ),
         SizedBox(width: 20),
@@ -22,7 +22,7 @@ class Time extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('End Time', style: Styles.textStyle18),
-            TimePickerButton(),
+            TimePickerButton(startTime: false,),
           ],
         ),
       ],

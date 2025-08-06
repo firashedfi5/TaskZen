@@ -1,8 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/core/utils/styles.dart';
+import 'package:task_management_app/features/tasks/presentation/manager/new_task_cubit/new_task_cubit.dart';
 
-class TimePickerButton extends StatelessWidget {
-  const TimePickerButton({super.key});
+class TimePickerButton extends StatefulWidget {
+  const TimePickerButton({super.key, required this.startTime});
+
+  final bool startTime;
+
+  @override
+  State<TimePickerButton> createState() => _TimePickerButtonState();
+}
+
+class _TimePickerButtonState extends State<TimePickerButton> {
+  TimeOfDay _timeOfDay = TimeOfDay.now();
+
+  Future<void> _showTimePicker() async {
+    final TimeOfDay? selectedTime = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
+
+    if (!mounted || selectedTime == null) return;
+
+    setState(() => _timeOfDay = selectedTime);
+
+    final cubit = BlocProvider.of<NewTaskCubit>(context);
+    if (widget.startTime == true) {
+      cubit.startTime = selectedTime;
+    } else {
+      cubit.endTime = selectedTime;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +43,13 @@ class TimePickerButton extends StatelessWidget {
         side: const BorderSide(color: Colors.grey, width: 1),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
       ),
-      onPressed: () {},
-      child: const Row(
+      onPressed: _showTimePicker,
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.watch_later_outlined),
-          SizedBox(width: 5),
-          Text('06:00 AM'),
+          const Icon(Icons.watch_later_outlined),
+          const SizedBox(width: 5),
+          Text(_timeOfDay.format(context).toString()),
         ],
       ),
     );

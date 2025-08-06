@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:task_management_app/core/errors/failure.dart';
@@ -14,7 +12,7 @@ class TaskRepoImpl implements TaskRepo {
 
   @override
   Future<Either<Failure, Unit>> createTask(TaskModel task) async {
-    log('Task data: ${task.toJson()}');
+    // log('Task data: ${task.toJson()}');
     try {
       await apiService.post(endPoint: '/create-task', data: task.toJson());
       return right(unit);

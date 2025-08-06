@@ -13,8 +13,8 @@ class NewTaskCubit extends Cubit<NewTaskState> {
   final TaskRepo taskRepo;
   String priority = 'Low';
   DateTime date = DateTime(2003);
-  DateTime startDate = DateTime(2003);
-  DateTime endDate = DateTime(2003);
+  TimeOfDay startTime = TimeOfDay.now();
+  TimeOfDay endTime = TimeOfDay.now();
 
   Future<void> createTask({required TaskModel task}) async {
     emit(TaskLoading());

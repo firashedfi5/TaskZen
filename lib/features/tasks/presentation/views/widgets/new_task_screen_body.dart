@@ -97,6 +97,12 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
                       DateTime date = BlocProvider.of<NewTaskCubit>(
                         context,
                       ).date;
+                      TimeOfDay startTime = BlocProvider.of<NewTaskCubit>(
+                        context,
+                      ).startTime;
+                      TimeOfDay endTime = BlocProvider.of<NewTaskCubit>(
+                        context,
+                      ).endTime;
 
                       BlocProvider.of<NewTaskCubit>(context).createTask(
                         task: TaskModel(
@@ -106,8 +112,8 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
                           description: descriptionController.text,
                           priority: priority,
                           date: date,
-                          startTime: DateTime(2003),
-                          endTime: DateTime(2003),
+                          startTime: startTime,
+                          endTime: endTime,
                         ),
                       );
                     }
