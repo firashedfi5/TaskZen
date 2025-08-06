@@ -94,6 +94,9 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
                       String priority = BlocProvider.of<NewTaskCubit>(
                         context,
                       ).priority;
+                      DateTime date = BlocProvider.of<NewTaskCubit>(
+                        context,
+                      ).date;
 
                       BlocProvider.of<NewTaskCubit>(context).createTask(
                         task: TaskModel(
@@ -102,6 +105,9 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
                           title: titleController.text,
                           description: descriptionController.text,
                           priority: priority,
+                          date: date,
+                          startTime: DateTime(2003),
+                          endTime: DateTime(2003),
                         ),
                       );
                     }

@@ -37,9 +37,9 @@ class TaskModel {
       'title': title,
       'description': description,
       'priority': priority,
-      // 'date': date?.toIso8601String(),
-      // 'startTime': startTime?.toIso8601String(),
-      // 'endTime': endTime?.toIso8601String(),
+      'date': date?.toIso8601String().split('T').first,
+      'startTime': startTime?.toIso8601String().split('T').last,
+      'endTime': endTime?.toIso8601String().split('T').last,
     };
   }
 }
