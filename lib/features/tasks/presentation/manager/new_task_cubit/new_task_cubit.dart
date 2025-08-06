@@ -21,7 +21,7 @@ class NewTaskCubit extends Cubit<NewTaskState> {
     var result = await taskRepo.createTask(task);
     result.fold((failure) => emit(TaskFailure(failure.message)), (success) {
       emit(TaskSuccess('Task created successfully'));
-      log('Task created successfully');
+      log('Task created successfully ✓');
     });
   }
 }
