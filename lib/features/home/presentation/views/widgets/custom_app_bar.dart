@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/core/utils/styles.dart';
+import 'package:task_management_app/features/home/presentation/manager/home_cubit/home_cubit.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
@@ -19,7 +21,14 @@ class CustomAppBar extends StatelessWidget {
             ),
           ],
         ),
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.sunny))],
+        actions: [
+          IconButton(
+            onPressed: () {
+              BlocProvider.of<HomeCubit>(context).fetchTasks();
+            },
+            icon: const Icon(Icons.sunny),
+          ),
+        ],
       ),
     );
   }

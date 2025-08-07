@@ -15,7 +15,7 @@ class HomeRepoImpl implements HomeRepo {
     try {
       var data = await apiService.get(endPoint: '/fetch-tasks');
       List<TaskModel> tasks = [];
-      for (var item in data['items']) {
+      for (var item in data['data']) {
         tasks.add(TaskModel.fromJson(item));
       }
       return right(tasks);

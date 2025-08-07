@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_management_app/core/utils/functions/time_formating.dart';
+import 'package:task_management_app/core/utils/functions/time_parsing.dart';
 
 class TaskModel {
   final int? id;
@@ -28,9 +29,11 @@ class TaskModel {
     title: json['title'] as String?,
     description: json['description'] as String?,
     priority: json['priority'] as String?,
-    date: json['date'] as DateTime?,
-    startTime: json['startTime'] as TimeOfDay?,
-    endTime: json['endTime'] as TimeOfDay?,
+    date: json['date'] != null ? DateTime.parse(json['date']) : null,
+    startTime: json['startTime'] != null
+        ? parseTimeString(json['startTime'])
+        : null,
+    endTime: json['endTime'] != null ? parseTimeString(json['endTime']) : null,
   );
 
   Map<String, dynamic> toJson() {
