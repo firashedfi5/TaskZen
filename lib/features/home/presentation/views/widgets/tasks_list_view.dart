@@ -22,6 +22,14 @@ class TaskListView extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is HomeSuccess) {
+          if (state.tasks.isEmpty) {
+            return const Center(
+              child: Text(
+                'No Task Added Yet',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            );
+          }
           return ListView.separated(
             physics: const BouncingScrollPhysics(),
             separatorBuilder: (context, index) => const SizedBox(width: 10),

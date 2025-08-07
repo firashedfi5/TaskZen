@@ -15,7 +15,7 @@ class HomeScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit(getIt.get<HomeRepoImpl>()),
+      create: (context) => HomeCubit(getIt.get<HomeRepoImpl>())..fetchTasks(),
       child: const SafeArea(
         child: CustomScrollView(
           physics: BouncingScrollPhysics(),
