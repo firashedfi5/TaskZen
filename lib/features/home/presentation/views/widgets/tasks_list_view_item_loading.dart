@@ -3,8 +3,8 @@ import 'package:task_management_app/core/constants.dart';
 import 'package:task_management_app/core/utils/styles.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 
-class TasksListViewItem extends StatelessWidget {
-  const TasksListViewItem({
+class TasksListViewItemLoading extends StatelessWidget {
+  const TasksListViewItemLoading({
     super.key,
     required this.aspectRatio,
     required this.maxLines,
@@ -54,7 +54,7 @@ class TasksListViewItem extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: kHighPriorityColor,
+                    // color: kHighPriorityColor,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Padding(

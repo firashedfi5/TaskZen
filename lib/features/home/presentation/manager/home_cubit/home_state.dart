@@ -7,10 +7,10 @@ final class HomeInitial extends HomeState {}
 
 final class HomeLoading extends HomeState {}
 
-final class HomeSucces extends HomeState {
+final class HomeSuccess extends HomeState {
   final List<TaskModel> tasks;
 
-  HomeSucces(this.tasks);
+  HomeSuccess(this.tasks);
 }
 
 final class HomeFailure extends HomeState {

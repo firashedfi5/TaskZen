@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/core/utils/functions/custom_snack_bar.dart';
 import 'package:task_management_app/features/home/presentation/manager/home_cubit/home_cubit.dart';
+import 'package:task_management_app/features/home/presentation/views/widgets/task_list_view_loading.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/tasks_list_view_item.dart';
 
 class TaskListView extends StatelessWidget {
@@ -20,20 +21,24 @@ class TaskListView extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        if (state is HomeSucces) {
+        if (state is HomeSuccess) {
           return ListView.separated(
             physics: const BouncingScrollPhysics(),
             separatorBuilder: (context, index) => const SizedBox(width: 10),
-            itemCount: 5,
+            itemCount: state.tasks.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              return const TasksListViewItem(aspectRatio: 3 / 3, maxLines: 2);
+              return TasksListViewItem(
+                taskModel: state.tasks[index],
+                aspectRatio: 3 / 3,
+                maxLines: 2,
+              );
             },
           );
-        } else if (state is HomeFailure) {
+        } else if (state is HomeSuccess) {
           return const Text('data');
         } else {
-          return const CircularProgressIndicator();
+          return const TaskListViewLoading();
         }
       },
     );

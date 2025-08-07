@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:task_management_app/features/home/presentation/views/widgets/tasks_list_view_item.dart';
 
 class CalendarTasks extends StatelessWidget {
   const CalendarTasks({super.key});
@@ -13,7 +12,8 @@ class CalendarTasks extends StatelessWidget {
           childCount: 5,
           (context, index) => const Padding(
             padding: EdgeInsets.only(bottom: 10),
-            child: TasksListViewItem(aspectRatio: 3 / 1.15, maxLines: 1),
+            child: Placeholder(),
+            // TasksListViewItem(taskModel: ,aspectRatio: 3 / 1.15, maxLines: 1),
           ),
         ),
       ),

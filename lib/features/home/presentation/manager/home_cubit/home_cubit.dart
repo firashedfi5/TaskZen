@@ -12,13 +12,14 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> fetchTasks() async {
     emit(HomeLoading());
+    await Future.delayed(const Duration(seconds: 5));
     var result = await homeRepo.fetchTasks();
     result.fold(
       (failure) {
         emit(HomeFailure(failure.message));
       },
       (tasks) {
-        emit(HomeSucces(tasks));
+        emit(HomeSuccess(tasks));
       },
     );
   }
