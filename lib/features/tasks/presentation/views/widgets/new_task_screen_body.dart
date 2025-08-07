@@ -24,7 +24,6 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  // var uuid = const Uuid();
 
   @override
   void dispose() {
