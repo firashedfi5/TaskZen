@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:task_management_app/features/calendar/presentation/manager/calendar_cubit/calendar_cubit.dart';
 
-class Calendar extends StatelessWidget {
+class Calendar extends StatefulWidget {
   const Calendar({super.key});
+
+  @override
+  State<Calendar> createState() => _CalendarState();
+}
+
+class _CalendarState extends State<Calendar> {
+  DateTime today = DateTime.now();
+  DateTime focusedDay = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +24,18 @@ class Calendar extends StatelessWidget {
             formatButtonVisible: false,
             titleCentered: true,
           ),
-          firstDay: DateTime.utc(2010, 10, 16),
-          lastDay: DateTime.utc(2030, 3, 14),
-          focusedDay: DateTime.now(),
-          currentDay: DateTime.utc(2025, 8, 31),
+          firstDay: DateTime.utc(2020, 1, 1),
+          lastDay: DateTime.utc(2030, 12, 31),
+          focusedDay: focusedDay,
+          availableGestures: AvailableGestures.all,
+          selectedDayPredicate: (day) => isSameDay(day, today),
+          onDaySelected: (selectedDay, newFocusedDay) {
+            setState(() {
+              today = selectedDay;
+              focusedDay = newFocusedDay;
+            });
+            BlocProvider.of<CalendarCubit>(context).fetchTasks(focusedDay);
+          },
         ),
       ),
     );

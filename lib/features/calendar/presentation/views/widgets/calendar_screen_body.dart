@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:task_management_app/core/utils/service_locator.dart';
+import 'package:task_management_app/features/calendar/presentation/manager/calendar_cubit/calendar_cubit.dart';
 import 'package:task_management_app/features/calendar/presentation/views/widgets/calendar.dart';
 import 'package:task_management_app/features/calendar/presentation/views/widgets/calendar_tasks.dart';
+import 'package:task_management_app/features/home/data/repos/home_repo_impl.dart';
 
 class CalendarScreenBody extends StatelessWidget {
   const CalendarScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
-      physics: BouncingScrollPhysics(),
-      slivers: [
-        SliverAppBar(title: Text('Calendar')),
-        Calendar(),
-        CalendarTasks(),
-      ],
+    return BlocProvider(
+      create: (context) =>
+          CalendarCubit(getIt.get<HomeRepoImpl>())..fetchTasks(DateTime.now()),
+      child: const CustomScrollView(
+        physics: BouncingScrollPhysics(),
+        slivers: [
+          SliverAppBar(title: Text('Calendar')),
+          Calendar(),
+          CalendarTasks(),
+        ],
+      ),
     );
   }
 }
