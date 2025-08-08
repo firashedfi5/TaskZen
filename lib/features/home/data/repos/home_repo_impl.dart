@@ -11,9 +11,11 @@ class HomeRepoImpl implements HomeRepo {
   HomeRepoImpl(this.apiService);
 
   @override
-  Future<Either<Failure, List<TaskModel>>> fetchTasks() async {
+  Future<Either<Failure, List<TaskModel>>> fetchTasks(DateTime date) async {
     try {
-      var data = await apiService.get(endPoint: '/fetch-tasks');
+      var data = await apiService.get(
+        endPoint: '/fetch-tasks/${date.toIso8601String().split('T').first}',
+      );
       List<TaskModel> tasks = [];
       for (var item in data['data']) {
         tasks.add(TaskModel.fromJson(item));

@@ -10,10 +10,10 @@ class HomeCubit extends Cubit<HomeState> {
 
   final HomeRepo homeRepo;
 
-  Future<void> fetchTasks() async {
+  Future<void> fetchTasks(DateTime date) async {
     emit(HomeLoading());
-    await Future.delayed(const Duration(seconds: 5));
-    var result = await homeRepo.fetchTasks();
+    // await Future.delayed(const Duration(seconds: 5));
+    var result = await homeRepo.fetchTasks(date);
     result.fold(
       (failure) {
         emit(HomeFailure(failure.message));

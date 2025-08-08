@@ -12,7 +12,7 @@ class NewTaskCubit extends Cubit<NewTaskState> {
 
   final TaskRepo taskRepo;
   String priority = 'Low';
-  DateTime date = DateTime(2003);
+  DateTime date = DateTime.now();
   TimeOfDay startTime = TimeOfDay.now();
   TimeOfDay endTime = TimeOfDay.now();
 
