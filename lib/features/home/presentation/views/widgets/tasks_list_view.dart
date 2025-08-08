@@ -43,8 +43,8 @@ class TaskListView extends StatelessWidget {
               );
             },
           );
-        } else if (state is HomeSuccess) {
-          return const Text('data');
+        } else if (state is HomeFailure) {
+          return Text(state.errMessage);
         } else {
           return const TaskListViewLoading();
         }

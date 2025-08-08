@@ -62,7 +62,7 @@ class TasksListViewItemLoading extends StatelessWidget {
                       horizontal: 5,
                       vertical: 1,
                     ),
-                    child: Text(taskModel.priority!, style: Styles.textStyle11),
+                    child: Text(taskModel.priority!, style: Styles.textStyle12),
                   ),
                 ),
               ),

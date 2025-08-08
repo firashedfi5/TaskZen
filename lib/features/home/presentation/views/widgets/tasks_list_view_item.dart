@@ -49,20 +49,24 @@ class TasksListViewItem extends StatelessWidget {
                   Text(taskModel.startTime!.format(context)),
                 ],
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 8),
               Align(
                 alignment: Alignment.bottomRight,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: kHighPriorityColor,
+                    color: taskModel.priority == "High"
+                        ? kHighPriorityColor
+                        : taskModel.priority == "Medium"
+                        ? kMediumPriorityColor
+                        : kLowPriorityColor,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 5,
-                      vertical: 1,
+                      horizontal: 6,
+                      vertical: 3,
                     ),
-                    child: Text(taskModel.priority!, style: Styles.textStyle11),
+                    child: Text(taskModel.priority!, style: Styles.textStyle12),
                   ),
                 ),
               ),
