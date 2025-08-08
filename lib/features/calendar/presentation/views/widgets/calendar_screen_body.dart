@@ -13,7 +13,8 @@ class CalendarScreenBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          CalendarCubit(getIt.get<HomeRepoImpl>())..fetchTasks(DateTime.now()),
+          CalendarCubit(getIt.get<HomeRepoImpl>())
+            ..fetchTasksByDate(DateTime.now()),
       child: const CustomScrollView(
         physics: BouncingScrollPhysics(),
         slivers: [

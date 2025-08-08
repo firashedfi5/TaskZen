@@ -3,7 +3,7 @@ import 'package:task_management_app/core/errors/failure.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 
 abstract class HomeRepo {
-  Future<Either<Failure, List<TaskModel>>> fetchTasks(
+  Future<Either<Failure, List<TaskModel>>> fetchTasksByDate(
     //String userId,
     DateTime date,
   ); //* GET /tasks

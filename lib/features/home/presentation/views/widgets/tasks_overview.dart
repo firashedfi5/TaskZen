@@ -14,7 +14,8 @@ class TasksOverview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit(getIt.get<HomeRepoImpl>())..fetchTasks(date),
+      create: (context) =>
+          HomeCubit(getIt.get<HomeRepoImpl>())..fetchTasksByDate(date),
       child: SliverPadding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         sliver: SliverToBoxAdapter(

@@ -9,10 +9,10 @@ class CalendarCubit extends Cubit<CalendarState> {
   CalendarCubit(this.homeRepo) : super(CalendarInitial());
   final HomeRepo homeRepo;
 
-  Future<void> fetchTasks(DateTime date) async {
+  Future<void> fetchTasksByDate(DateTime date) async {
     emit(CalendarLoading());
     // await Future.delayed(const Duration(seconds: 5));
-    var result = await homeRepo.fetchTasks(date);
+    var result = await homeRepo.fetchTasksByDate(date);
     result.fold(
       (failure) {
         emit(CalendarFailure(failure.message));
