@@ -9,6 +9,7 @@ abstract class HomeRepo {
   );
   Future<Either<Failure, int>> fetchTasksCountPerMonth(
     //String userId,
-    DateTime month,
+    int month,
+    int year,
   );
 }

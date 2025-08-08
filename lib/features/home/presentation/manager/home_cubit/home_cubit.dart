@@ -24,9 +24,9 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-  Future<void> fetchTasksCountPerMonth(DateTime month) async {
+  Future<void> fetchTasksCountPerMonth(int month, int year) async {
     emit(HomeLoading());
-    var result = await homeRepo.fetchTasksCountPerMonth(month);
+    var result = await homeRepo.fetchTasksCountPerMonth(month, year);
     result.fold(
       (failure) {
         emit(HomeFailure(failure.message));
