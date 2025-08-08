@@ -6,5 +6,9 @@ abstract class HomeRepo {
   Future<Either<Failure, List<TaskModel>>> fetchTasksByDate(
     //String userId,
     DateTime date,
-  ); //* GET /tasks
+  );
+  Future<Either<Failure, int>> fetchTasksCountPerMonth(
+    //String userId,
+    DateTime month,
+  );
 }

@@ -30,4 +30,17 @@ class HomeRepoImpl implements HomeRepo {
       return left(ServerFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, int>> fetchTasksCountPerMonth(DateTime month) async {
+    try {
+      var data = await apiService.get(endPoint: 'fetch-tasks/${DateTime.now().month}');
+      return (data['count']);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
+  }
 }

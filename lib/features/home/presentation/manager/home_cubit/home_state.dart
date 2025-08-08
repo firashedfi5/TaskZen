@@ -13,6 +13,12 @@ final class HomeSuccess extends HomeState {
   HomeSuccess(this.tasks);
 }
 
+final class HomeTasksCountLoaded  extends HomeState {
+  final int tasksCount;
+
+  HomeTasksCountLoaded(this.tasksCount);
+}
+
 final class HomeFailure extends HomeState {
   final String errMessage;
 
