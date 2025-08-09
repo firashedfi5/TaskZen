@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:task_management_app/core/utils/service_locator.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 import 'package:task_management_app/features/tasks/data/repos/task_repo.dart';
 
@@ -12,7 +13,7 @@ class NewTaskCubit extends Cubit<NewTaskState> {
 
   final TaskRepo taskRepo;
   String priority = 'Low';
-  DateTime date = DateTime.now();
+  DateTime date = getIt.get<DateTime>();
   TimeOfDay startTime = TimeOfDay.now();
   TimeOfDay endTime = TimeOfDay.now();
 

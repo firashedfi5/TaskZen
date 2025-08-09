@@ -16,4 +16,5 @@ void setup() {
     CalendarRepoImpl(getIt.get<ApiService>()),
   );
   getIt.registerSingleton<Uuid>(const Uuid());
+  getIt.registerSingleton<DateTime>(DateTime.now());
 }

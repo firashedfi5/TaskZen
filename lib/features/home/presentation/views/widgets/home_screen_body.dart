@@ -18,14 +18,16 @@ class HomeScreenBody extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => GetTasksCountCubit(
-            getIt.get<HomeRepoImpl>(),
-          )..fetchTasksCountPerMonth(DateTime.now().month, DateTime.now().year),
+          create: (context) => GetTasksCountCubit(getIt.get<HomeRepoImpl>())
+            ..fetchTasksCountPerMonth(
+              getIt.get<DateTime>().month,
+              getIt.get<DateTime>().year,
+            ),
         ),
         BlocProvider(
           create: (context) =>
               GetTasksCubit(getIt.get<HomeRepoImpl>())
-                ..fetchTasksByDate(DateTime.now()),
+                ..fetchTasksByDate(getIt.get<DateTime>()),
         ),
       ],
       child: SafeArea(
@@ -36,10 +38,10 @@ class HomeScreenBody extends StatelessWidget {
             const TasksNumber(),
             const CustomSearchBar(),
             const StatusBar(),
-            TasksOverview(title: 'Today\'s Tasks', date: DateTime.now()),
+            TasksOverview(title: 'Today\'s Tasks', date: getIt.get<DateTime>()),
             TasksOverview(
               title: 'Tomorrow\'s Tasks',
-              date: DateTime.now().add(const Duration(days: 1)),
+              date: getIt.get<DateTime>().add(const Duration(days: 1)),
             ),
           ],
         ),

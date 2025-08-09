@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:task_management_app/core/utils/service_locator.dart';
 import 'package:task_management_app/features/tasks/presentation/manager/new_task_cubit/new_task_cubit.dart';
 
 class ChooseDate extends StatefulWidget {
@@ -11,8 +12,8 @@ class ChooseDate extends StatefulWidget {
 }
 
 class _ChooseDateState extends State<ChooseDate> {
-  DateTime today = DateTime.now();
-  DateTime focusedDay = DateTime.now();
+  DateTime today = getIt.get<DateTime>();
+  DateTime focusedDay = getIt.get<DateTime>();
 
   @override
   Widget build(BuildContext context) {
