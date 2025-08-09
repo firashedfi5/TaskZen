@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/core/utils/functions/custom_snack_bar.dart';
-import 'package:task_management_app/features/home/presentation/manager/home_cubit/home_cubit.dart';
+import 'package:task_management_app/features/home/presentation/manager/get_tasks_cubit/get_tasks_cubit.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/task_list_view_loading.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/tasks_list_view_item.dart';
 
@@ -10,9 +10,9 @@ class TaskListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HomeCubit, HomeState>(
+    return BlocConsumer<GetTasksCubit, GetTasksState>(
       listener: (context, state) {
-        if (state is HomeFailure) {
+        if (state is GetTasksFailure) {
           customSnackBar(
             context: context,
             errMessage: state.errMessage,
@@ -21,7 +21,7 @@ class TaskListView extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        if (state is HomeSuccess) {
+        if (state is GetTasksSuccess) {
           if (state.tasks.isEmpty) {
             return const Center(
               child: Text(
@@ -43,11 +43,12 @@ class TaskListView extends StatelessWidget {
               );
             },
           );
-        } else if (state is HomeFailure) {
+        } else if (state is GetTasksFailure) {
           return Text(state.errMessage);
-        } else {
+        } else if (state is GetTasksLoading) {
           return const TaskListViewLoading();
         }
+        return const SizedBox();
       },
     );
   }

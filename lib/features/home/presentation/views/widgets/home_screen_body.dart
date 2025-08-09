@@ -17,7 +17,8 @@ class HomeScreenBody extends StatelessWidget {
     return BlocProvider(
       create: (context) => GetTasksCubit(
         getIt.get<HomeRepoImpl>(),
-      )..fetchTasksCountPerMonth(DateTime.now().month + 1, DateTime.now().year),
+      )..fetchTasksCountPerMonth(DateTime.now().month + 1, DateTime.now().year)
+        ..fetchTasksByDate(DateTime.now()),
       child: SafeArea(
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
