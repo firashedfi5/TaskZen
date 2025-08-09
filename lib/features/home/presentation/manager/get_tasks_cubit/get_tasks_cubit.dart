@@ -24,16 +24,5 @@ class GetTasksCubit extends Cubit<GetTasksState> {
     );
   }
 
-  Future<void> fetchTasksCountPerMonth(int month, int year) async {
-    emit(GetTasksCountLoading());
-    var result = await homeRepo.fetchTasksCountPerMonth(month, year);
-    result.fold(
-      (failure) {
-        emit(GetTasksCountFailure(failure.message));
-      },
-      (tasksCount) {
-        emit(GetTasksCountSuccess(tasksCount));
-      },
-    );
-  }
+  
 }

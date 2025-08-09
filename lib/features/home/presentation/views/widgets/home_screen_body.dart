@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/core/utils/service_locator.dart';
 import 'package:task_management_app/features/home/data/repos/home_repo_impl.dart';
+import 'package:task_management_app/features/home/presentation/manager/cubit/get_tasks_count_cubit.dart';
 import 'package:task_management_app/features/home/presentation/manager/get_tasks_cubit/get_tasks_cubit.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/custom_app_bar.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/custom_search_bar.dart';
@@ -14,11 +15,21 @@ class HomeScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => GetTasksCubit(
-        getIt.get<HomeRepoImpl>(),
-      )..fetchTasksCountPerMonth(DateTime.now().month + 1, DateTime.now().year)
-        ..fetchTasksByDate(DateTime.now()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => GetTasksCountCubit(getIt.get<HomeRepoImpl>())
+            ..fetchTasksCountPerMonth(
+              DateTime.now().month + 1,
+              DateTime.now().year,
+            ),
+        ),
+        BlocProvider(
+          create: (context) =>
+              GetTasksCubit(getIt.get<HomeRepoImpl>())
+                ..fetchTasksByDate(DateTime.now()),
+        ),
+      ],
       child: SafeArea(
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),

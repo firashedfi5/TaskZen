@@ -19,16 +19,4 @@ final class GetTasksFailure extends GetTasksState {
   GetTasksFailure(this.errMessage);
 }
 
-final class GetTasksCountLoading extends GetTasksState {}
 
-final class GetTasksCountSuccess extends GetTasksState {
-  final int tasksCount;
-
-  GetTasksCountSuccess(this.tasksCount);
-}
-
-final class GetTasksCountFailure extends GetTasksState {
-  final String errMessage;
-
-  GetTasksCountFailure(this.errMessage);
-}
