@@ -18,11 +18,9 @@ class HomeScreenBody extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => GetTasksCountCubit(getIt.get<HomeRepoImpl>())
-            ..fetchTasksCountPerMonth(
-              DateTime.now().month + 1,
-              DateTime.now().year,
-            ),
+          create: (context) => GetTasksCountCubit(
+            getIt.get<HomeRepoImpl>(),
+          )..fetchTasksCountPerMonth(DateTime.now().month, DateTime.now().year),
         ),
         BlocProvider(
           create: (context) =>

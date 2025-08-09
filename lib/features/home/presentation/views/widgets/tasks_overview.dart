@@ -22,7 +22,7 @@ class TasksOverview extends StatelessWidget {
             const SizedBox(height: 10),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.22,
-              child: const TaskListView(),
+              child: TaskListView(date: date),
             ),
           ],
         ),

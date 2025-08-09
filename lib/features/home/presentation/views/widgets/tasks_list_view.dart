@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/core/utils/functions/custom_snack_bar.dart';
+import 'package:task_management_app/core/utils/functions/date_comparaison.dart';
 import 'package:task_management_app/features/home/presentation/manager/get_tasks_cubit/get_tasks_cubit.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/task_list_view_loading.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/tasks_list_view_item.dart';
 
 class TaskListView extends StatelessWidget {
-  const TaskListView({super.key});
+  const TaskListView({super.key, required this.date});
+
+  final DateTime date;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,11 @@ class TaskListView extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is GetTasksSuccess) {
-          if (state.tasks.isEmpty) {
+          final tasksForDate = state.tasks.where((task) {
+            return isSameDay(task.date!, date);
+          }).toList();
+
+          if (tasksForDate.isEmpty) {
             return const Center(
               child: Text(
                 'No Task Added Yet',
@@ -33,11 +40,11 @@ class TaskListView extends StatelessWidget {
           return ListView.separated(
             physics: const BouncingScrollPhysics(),
             separatorBuilder: (context, index) => const SizedBox(width: 10),
-            itemCount: state.tasks.length,
+            itemCount: tasksForDate.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return TasksListViewItem(
-                taskModel: state.tasks[index],
+                taskModel: tasksForDate[index],
                 aspectRatio: 3 / 3,
                 maxLines: 2,
               );
