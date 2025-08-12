@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/core/utils/functions/custom_snack_bar.dart';
 import 'package:task_management_app/features/home/presentation/manager/filtering_cubit/filtering_cubit.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/tasks_grid_view_sliver.dart';
+import 'package:task_management_app/features/home/presentation/views/widgets/tasks_grid_view_sliver_loading.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/today_and_tomorrow_tasks.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 
@@ -38,9 +39,7 @@ class TasksOverviewSection extends StatelessWidget {
             }
             return TasksGridViewSliver(tasks: tasks);
           } else if (state is FilteringLoading) {
-            return const SliverToBoxAdapter(
-              child: Center(child: CircularProgressIndicator()),
-            );
+            return const TasksGridViewSliverLoading();
           } else if (state is FilteringFailure) {
             return const SliverToBoxAdapter(
               child: Center(child: Text('Something went wrong')),
