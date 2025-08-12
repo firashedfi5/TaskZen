@@ -11,6 +11,7 @@ class TaskModel {
   final DateTime? date;
   final TimeOfDay? startTime;
   final TimeOfDay? endTime;
+  final String? status;
 
   TaskModel({
     this.id,
@@ -21,6 +22,7 @@ class TaskModel {
     this.date,
     this.startTime,
     this.endTime,
+    this.status,
   });
 
   factory TaskModel.fromJson(Map<String, dynamic> json) => TaskModel(
@@ -34,6 +36,7 @@ class TaskModel {
         ? parseTimeString(json['startTime'])
         : null,
     endTime: json['endTime'] != null ? parseTimeString(json['endTime']) : null,
+    status: json['status'] as String?,
   );
 
   Map<String, dynamic> toJson() {
@@ -46,6 +49,7 @@ class TaskModel {
       'date': date?.toIso8601String().split('T').first,
       'startTime': formatTimeOfDay(startTime!),
       'endTime': formatTimeOfDay(endTime!),
+      'status': 'To Do',
     };
   }
 }
