@@ -14,6 +14,7 @@ class CalendarCubit extends Cubit<CalendarState> {
 
   DateTime focusedDay = getIt.get<DateTime>();
 
+  // TODO: Make a method in the backend to only fetch tasks for specific day
   Future<void> fetchTasksByDate(DateTime date) async {
     emit(CalendarLoading());
     // await Future.delayed(const Duration(seconds: 5));
