@@ -6,7 +6,6 @@ import 'package:task_management_app/features/home/presentation/manager/filtering
 import 'package:task_management_app/features/home/presentation/manager/get_tasks_count_cubit/get_tasks_count_cubit.dart';
 import 'package:task_management_app/features/home/presentation/manager/get_tasks_cubit/get_tasks_cubit.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/custom_app_bar.dart';
-import 'package:task_management_app/features/home/presentation/views/widgets/custom_search_bar.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/status_bar.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/tasks_number.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/tasks_overview.dart';
@@ -40,7 +39,7 @@ class HomeScreenBody extends StatelessWidget {
           slivers: [
             CustomAppBar(),
             TasksNumber(),
-            CustomSearchBar(),
+            // CustomSearchBar(),
             StatusBar(),
             TasksOverviewSection(),
           ],
