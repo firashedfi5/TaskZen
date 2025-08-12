@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/core/constants.dart';
-import 'package:task_management_app/core/utils/service_locator.dart';
 import 'package:task_management_app/features/home/presentation/manager/filtering_cubit/filtering_cubit.dart';
-import 'package:task_management_app/features/home/presentation/manager/get_tasks_cubit/get_tasks_cubit.dart';
 
 class StatusBar extends StatefulWidget {
   const StatusBar({super.key});
@@ -63,9 +61,7 @@ class _StatusBarState extends State<StatusBar> {
           ).fetchTasksByStatus(selectedItem!);
         } else {
           // log("No status selected, maybe fetch all tasks here");
-          BlocProvider.of<GetTasksCubit>(
-            context,
-          ).fetchTasksByDate(getIt.get<DateTime>());
+          BlocProvider.of<FilteringCubit>(context).resetToInitial();
         }
       },
       selectedColor: kSecondaryColor,

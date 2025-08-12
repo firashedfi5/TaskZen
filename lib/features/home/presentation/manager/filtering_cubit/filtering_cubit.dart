@@ -23,4 +23,8 @@ class FilteringCubit extends Cubit<FilteringState> {
       },
     );
   }
+
+  void resetToInitial() {
+    emit(FilteringInitial());
+  }
 }
