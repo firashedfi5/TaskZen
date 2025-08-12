@@ -12,4 +12,8 @@ abstract class HomeRepo {
     int month,
     int year,
   );
+  Future<Either<Failure, List<TaskModel>>> fetchTasksByStatus(
+    //String userId,
+    String status,
+  );
 }

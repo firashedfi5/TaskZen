@@ -48,4 +48,23 @@ class HomeRepoImpl implements HomeRepo {
       return left(ServerFailure(e.toString()));
     }
   }
+  
+  @override
+  Future<Either<Failure, List<TaskModel>>> fetchTasksByStatus(String status) async {
+    try {
+      var data = await apiService.get(
+        endPoint: '/tasks/date?status=$status',
+      );
+      List<TaskModel> tasks = [];
+      for (var item in data['data']) {
+        tasks.add(TaskModel.fromJson(item));
+      }
+      return right(tasks);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
+  }
 }
