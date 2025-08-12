@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/core/constants.dart';
+import 'package:task_management_app/features/home/presentation/manager/filtering_cubit/filtering_cubit.dart';
 
 class StatusBar extends StatefulWidget {
   const StatusBar({super.key});
@@ -52,6 +56,10 @@ class _StatusBarState extends State<StatusBar> {
         setState(() {
           selectedItem = value ? status : null;
         });
+        log(selectedItem!);
+        BlocProvider.of<FilteringCubit>(
+          context,
+        ).fetchTasksByStatus(selectedItem!);
       },
       selectedColor: kSecondaryColor,
     );

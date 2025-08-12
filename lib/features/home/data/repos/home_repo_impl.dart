@@ -48,13 +48,13 @@ class HomeRepoImpl implements HomeRepo {
       return left(ServerFailure(e.toString()));
     }
   }
-  
+
   @override
-  Future<Either<Failure, List<TaskModel>>> fetchTasksByStatus(String status) async {
+  Future<Either<Failure, List<TaskModel>>> fetchTasksByStatus(
+    String status,
+  ) async {
     try {
-      var data = await apiService.get(
-        endPoint: '/tasks/date?status=$status',
-      );
+      var data = await apiService.get(endPoint: '/tasks/status?status=$status');
       List<TaskModel> tasks = [];
       for (var item in data['data']) {
         tasks.add(TaskModel.fromJson(item));
