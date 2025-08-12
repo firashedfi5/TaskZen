@@ -16,7 +16,7 @@ class HomeRepoImpl implements HomeRepo {
   ) async {
     try {
       var data = await apiService.get(
-        endPoint: '/fetch-tasks/${date.toIso8601String().split('T').first}',
+        endPoint: '/tasks/date?date=${date.toIso8601String().split('T').first}',
       );
       List<TaskModel> tasks = [];
       for (var item in data['data']) {
@@ -37,7 +37,9 @@ class HomeRepoImpl implements HomeRepo {
     int year,
   ) async {
     try {
-      var data = await apiService.get(endPoint: '/fetch-tasks/$month/$year');
+      var data = await apiService.get(
+        endPoint: '/tasks/stats/monthly?month=$month&year=$year',
+      );
       return right(data['count']);
     } catch (e) {
       if (e is DioException) {

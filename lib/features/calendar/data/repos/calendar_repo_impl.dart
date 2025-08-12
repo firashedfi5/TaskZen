@@ -15,7 +15,7 @@ class CalendarRepoImpl implements CalendarRepo {
   @override
   Future<Either<Failure, List<TaskModel>>> fetchAllTasks() async {
     try {
-      var data = await apiService.get(endPoint: '/fetch-tasks');
+      var data = await apiService.get(endPoint: '/tasks');
       List<TaskModel> tasks = [];
       for (var item in data['data']) {
         tasks.add(TaskModel.fromJson(item));

@@ -14,7 +14,7 @@ class TaskRepoImpl implements TaskRepo {
   Future<Either<Failure, Unit>> createTask(TaskModel task) async {
     // log('Task data: ${task.toJson()}');
     try {
-      await apiService.post(endPoint: '/create-task', data: task.toJson());
+      await apiService.post(endPoint: '/tasks', data: task.toJson());
       return right(unit);
     } catch (e) {
       if (e is DioException) {
