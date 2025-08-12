@@ -56,10 +56,15 @@ class _StatusBarState extends State<StatusBar> {
         setState(() {
           selectedItem = value ? status : null;
         });
-        log(selectedItem!);
-        BlocProvider.of<FilteringCubit>(
-          context,
-        ).fetchTasksByStatus(selectedItem!);
+        if (selectedItem != null) {
+          // log(selectedItem!);
+          BlocProvider.of<FilteringCubit>(
+            context,
+          ).fetchTasksByStatus(selectedItem!);
+        } else {
+          log("No status selected, maybe fetch all tasks here");
+          // BlocProvider.of<FilteringCubit>(context).fetchAllTasks();
+        }
       },
       selectedColor: kSecondaryColor,
     );

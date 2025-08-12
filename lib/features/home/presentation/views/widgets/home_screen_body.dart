@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:task_management_app/core/utils/service_locator.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/custom_app_bar.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/custom_search_bar.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/status_bar.dart';
@@ -11,19 +10,15 @@ class HomeScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
+        physics: BouncingScrollPhysics(),
         slivers: [
-          const CustomAppBar(),
-          const TasksNumber(),
-          const CustomSearchBar(),
-          const StatusBar(),
-          TasksOverview(title: 'Today\'s Tasks', date: getIt.get<DateTime>()),
-          TasksOverview(
-            title: 'Tomorrow\'s Tasks',
-            date: getIt.get<DateTime>().add(const Duration(days: 1)),
-          ),
+          CustomAppBar(),
+          TasksNumber(),
+          CustomSearchBar(),
+          StatusBar(),
+          TasksOverviewSection(),
         ],
       ),
     );
