@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/core/utils/styles.dart';
-import 'package:task_management_app/features/home/presentation/manager/cubit/get_tasks_count_cubit.dart';
+import 'package:task_management_app/features/home/presentation/manager/get_tasks_count_cubit/get_tasks_count_cubit.dart';
 
 class TasksNumber extends StatelessWidget {
   const TasksNumber({super.key});
