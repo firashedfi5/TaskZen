@@ -59,7 +59,9 @@ class CalendarTasks extends StatelessWidget {
             ),
           );
         } else if (state is CalendarFailure) {
-          return const Text('data');
+          return const Center(
+            child: Icon(Icons.error, color: Colors.red, size: 30),
+          );
         } else {
           return const CalendarTasksLoading();
         }

@@ -42,7 +42,9 @@ class TasksOverviewSection extends StatelessWidget {
             return const TasksGridViewSliverLoading();
           } else if (state is FilteringFailure) {
             return const SliverToBoxAdapter(
-              child: Center(child: Text('Something went wrong')),
+              child: Center(
+                child: Icon(Icons.error, color: Colors.red, size: 30),
+              ),
             );
           }
           return const SliverToBoxAdapter(child: TodayAndTomorrowTasks());

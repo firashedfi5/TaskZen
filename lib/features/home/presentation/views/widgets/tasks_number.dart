@@ -33,7 +33,9 @@ class TasksNumber extends StatelessWidget {
                 ),
               );
             } else if (state is GetTasksCountFailure) {
-              return Center(child: Text(state.errMessage));
+              return const Center(
+                child: Icon(Icons.error, color: Colors.red, size: 30),
+              );
             } else if (state is GetTasksCountLoading) {
               return const Center(child: CircularProgressIndicator());
             }

@@ -51,7 +51,9 @@ class TaskListView extends StatelessWidget {
             },
           );
         } else if (state is GetTasksFailure) {
-          return Text(state.errMessage);
+          return const Center(
+            child: Icon(Icons.error, color: Colors.red, size: 30),
+          );
         } else if (state is GetTasksLoading) {
           return const TaskListViewLoading();
         }

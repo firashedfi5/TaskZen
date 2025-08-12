@@ -12,7 +12,7 @@ class FilteringCubit extends Cubit<FilteringState> {
 
   Future<void> fetchTasksByStatus(String status) async {
     emit(FilteringLoading());
-    await Future.delayed(const Duration(seconds: 5));
+    // await Future.delayed(const Duration(seconds: 5));
     var result = await homeRepo.fetchTasksByStatus(status);
     result.fold(
       (failure) {
