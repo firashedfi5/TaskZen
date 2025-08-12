@@ -51,7 +51,7 @@ class CalendarTasks extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 10),
                   child: TasksListViewItem(
                     taskModel: tasksForDate[index],
-                    aspectRatio: 3 / 1.15,
+                    aspectRatio: 3 / 1.2,
                     maxLines: 1,
                   ),
                 ),
