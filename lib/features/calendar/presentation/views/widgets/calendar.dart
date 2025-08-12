@@ -35,6 +35,8 @@ class _CalendarState extends State<Calendar> {
               today = selectedDay;
               focusedDay = newFocusedDay;
             });
+            BlocProvider.of<CalendarCubit>(context).focusedDay = focusedDay;
+
             BlocProvider.of<CalendarCubit>(
               context,
             ).fetchTasksByDate(focusedDay);
