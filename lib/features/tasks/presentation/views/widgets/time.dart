@@ -9,18 +9,18 @@ class Time extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Start Time', style: Styles.textStyle18),
-            TimePickerButton(startTime: true),
+            const Text('Start Time', style: Styles.textStyle18),
+            TimePickerButton(startTime: true, updating: updating),
           ],
         ),
-        SizedBox(width: 20),
-        Column(
+        const SizedBox(width: 20),
+        const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('End Time', style: Styles.textStyle18),

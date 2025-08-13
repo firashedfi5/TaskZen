@@ -4,9 +4,14 @@ import 'package:task_management_app/core/utils/styles.dart';
 import 'package:task_management_app/features/tasks/presentation/manager/new_task_cubit/new_task_cubit.dart';
 
 class TimePickerButton extends StatefulWidget {
-  const TimePickerButton({super.key, required this.startTime});
+  const TimePickerButton({
+    super.key,
+    required this.startTime,
+    this.updating = false,
+  });
 
   final bool startTime;
+  final bool updating;
 
   @override
   State<TimePickerButton> createState() => _TimePickerButtonState();
@@ -30,6 +35,20 @@ class _TimePickerButtonState extends State<TimePickerButton> {
       cubit.startTime = selectedTime;
     } else {
       cubit.endTime = selectedTime;
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final cubit = BlocProvider.of<NewTaskCubit>(context);
+
+    // Get time from cubit or use current time as default
+    if (widget.startTime == true) {
+      _timeOfDay = cubit.startTime;
+    } else {
+      _timeOfDay = cubit.endTime;
     }
   }
 
