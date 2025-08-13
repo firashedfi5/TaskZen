@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/core/utils/service_locator.dart';
 import 'package:task_management_app/features/calendar/data/repos/calendar_repo_impl.dart';
+import 'package:task_management_app/features/calendar/presentation/manager/calendar_cubit/calendar_cubit.dart';
 import 'package:task_management_app/features/calendar/presentation/manager/calendar_tasks_cubit/calendar_tasks_cubit.dart';
 import 'package:task_management_app/features/calendar/presentation/views/widgets/calendar.dart';
 import 'package:task_management_app/features/calendar/presentation/views/widgets/calendar_tasks.dart';
@@ -15,10 +16,13 @@ class CalendarScreenBody extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => CalendarTasksCubit(
-            getIt.get<HomeRepoImpl>(),
-            getIt.get<CalendarRepoImpl>(),
-          )..fetchTasksByDate(getIt.get<DateTime>()),
+          create: (context) =>
+              CalendarTasksCubit(getIt.get<HomeRepoImpl>())
+                ..fetchTasksByDate(getIt.get<DateTime>()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              CalendarCubit(getIt.get<CalendarRepoImpl>())..fetchAllTasks(),
         ),
       ],
       child: const CustomScrollView(
