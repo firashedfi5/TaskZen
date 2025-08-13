@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -53,7 +51,7 @@ class _CalendarState extends State<Calendar> {
                   ).fetchTasksByDate(focusedDay);
 
                   //* Testing
-                  log(taskCountByDate[DateTime(2025, 8, 13)].toString());
+                  // log(taskCountByDate[DateTime(2025, 8, 13)].toString());
                 },
 
                 calendarBuilders: CalendarBuilders(

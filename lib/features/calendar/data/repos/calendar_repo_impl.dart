@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:task_management_app/core/errors/failure.dart';
@@ -20,7 +18,7 @@ class CalendarRepoImpl implements CalendarRepo {
       for (var item in data['data']) {
         tasks.add(TaskModel.fromJson(item));
       }
-      log('Fetched ${tasks.length} in total');
+      // log('Fetched ${tasks.length} in total');
       return right(tasks);
     } catch (e) {
       if (e is DioException) {

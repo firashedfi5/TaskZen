@@ -33,9 +33,17 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
   void initState() {
     super.initState();
     if (widget.task != null) {
-      titleController.text = widget.task!.title ?? '';
-      descriptionController.text = widget.task!.description ?? '';
+      titleController.text = widget.task!.title!;
+      descriptionController.text = widget.task!.description!;
 
+      BlocProvider.of<NewTaskCubit>(context).priority = widget.task!.priority!;
+
+      BlocProvider.of<NewTaskCubit>(context).date = widget.task!.date!;
+
+      BlocProvider.of<NewTaskCubit>(context).startTime =
+          widget.task!.startTime!;
+
+      BlocProvider.of<NewTaskCubit>(context).endTime = widget.task!.endTime!;
       // Initialize cubit with existing task data
       // WidgetsBinding.instance.addPostFrameCallback((_) {
       //   final cubit = BlocProvider.of<NewTaskCubit>(context);
@@ -142,6 +150,22 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
                         }
                       : () {
                           log('Updating task');
+                          // log(BlocProvider.of<NewTaskCubit>(context).priority);
+                          // log(
+                          //   BlocProvider.of<NewTaskCubit>(
+                          //     context,
+                          //   ).date.toIso8601String().split('T').first,
+                          // );
+                          // log(
+                          //   formatTimeOfDay(
+                          //     BlocProvider.of<NewTaskCubit>(context).startTime,
+                          //   ),
+                          // );
+                          // log(
+                          //   formatTimeOfDay(
+                          //     BlocProvider.of<NewTaskCubit>(context).endTime,
+                          //   ),
+                          // );
                         },
                 ),
               ],
