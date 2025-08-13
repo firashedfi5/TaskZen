@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:task_management_app/core/utils/app_router.dart';
 import 'package:task_management_app/core/utils/functions/custom_snack_bar.dart';
 import 'package:task_management_app/core/utils/functions/date_comparaison.dart';
 import 'package:task_management_app/features/home/presentation/manager/get_tasks_cubit/get_tasks_cubit.dart';
@@ -43,10 +45,15 @@ class TaskListView extends StatelessWidget {
             itemCount: tasksForDate.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              return TasksListViewItem(
-                taskModel: tasksForDate[index],
-                aspectRatio: 3 / 3,
-                maxLines: 2,
+              return GestureDetector(
+                onTap: () => GoRouter.of(
+                  context,
+                ).push(AppRouter.kTaskScreen, extra: tasksForDate[index]),
+                child: TasksListViewItem(
+                  taskModel: tasksForDate[index],
+                  aspectRatio: 3 / 3,
+                  maxLines: 2,
+                ),
               );
             },
           );

@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:task_management_app/features/bottom_navbar/presentation/views/custom_bottom_navbar.dart';
 import 'package:task_management_app/features/calendar/presentation/views/calendar_screen.dart';
 import 'package:task_management_app/features/home/presentation/views/home_screen.dart';
+import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 import 'package:task_management_app/features/tasks/presentation/views/new_task_screen.dart';
 import 'package:task_management_app/features/tasks/presentation/views/task_screen.dart';
 
@@ -30,7 +31,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kTaskScreen,
-        builder: (context, state) => const TaskScreen(),
+        builder: (context, state) {
+          final task = state.extra as TaskModel;
+          return TaskScreen(task: task);
+        },
       ),
     ],
   );
