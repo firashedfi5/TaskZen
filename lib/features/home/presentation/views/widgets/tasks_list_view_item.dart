@@ -3,6 +3,7 @@ import 'package:task_management_app/core/constants.dart';
 import 'package:task_management_app/core/utils/styles.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/date_container.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/priority_container.dart';
+import 'package:task_management_app/features/home/presentation/views/widgets/time_container.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 
 class TasksListViewItem extends StatelessWidget {
@@ -29,6 +30,7 @@ class TasksListViewItem extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
@@ -38,8 +40,7 @@ class TasksListViewItem extends StatelessWidget {
                 style: Styles.textStyle18.copyWith(fontWeight: FontWeight.w600),
               ),
 
-              const SizedBox(height: 8),
-
+              // const SizedBox(height: 8),
               Text(
                 taskModel.description!,
                 overflow: TextOverflow.ellipsis,
@@ -47,18 +48,9 @@ class TasksListViewItem extends StatelessWidget {
                 style: Styles.textStyle16,
               ),
 
-              const SizedBox(height: 8),
+              TimeContainer(taskModel: taskModel),
 
-              Row(
-                children: [
-                  const Icon(Icons.watch_later_outlined),
-                  const SizedBox(width: 5),
-                  Text(taskModel.startTime!.format(context)),
-                ],
-              ),
-
-              const SizedBox(height: 8),
-
+              // const SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
