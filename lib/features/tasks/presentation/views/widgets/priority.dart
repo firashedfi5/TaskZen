@@ -5,7 +5,9 @@ import 'package:task_management_app/core/utils/styles.dart';
 import 'package:task_management_app/features/tasks/presentation/manager/new_task_cubit/new_task_cubit.dart';
 
 class Priority extends StatefulWidget {
-  const Priority({super.key});
+  const Priority({super.key, this.updating = false});
+
+  final bool updating;
 
   @override
   State<Priority> createState() => _PriorityState();
@@ -19,6 +21,14 @@ class _PriorityState extends State<Priority> {
     {'name': 'Medium', 'color': kMediumPriorityColor},
     {'name': 'Low', 'color': kLowPriorityColor},
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.updating == true) {
+      selectedPriority = BlocProvider.of<NewTaskCubit>(context).priority;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

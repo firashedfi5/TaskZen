@@ -44,11 +44,6 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
           widget.task!.startTime!;
 
       BlocProvider.of<NewTaskCubit>(context).endTime = widget.task!.endTime!;
-      // Initialize cubit with existing task data
-      // WidgetsBinding.instance.addPostFrameCallback((_) {
-      //   final cubit = BlocProvider.of<NewTaskCubit>(context);
-      //   cubit.initializeWithTask(widget.task!);
-      // });
     }
   }
 
@@ -96,7 +91,7 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text('Select Date', style: Styles.textStyle18),
-                const ChooseDate(),
+                ChooseDate(updating: widget.task != null ? true : false),
                 const SizedBox(height: 20),
                 CustomTextFormField(
                   name: 'Title',
@@ -112,9 +107,9 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
                   validationText: 'Please enter a description',
                 ),
                 const SizedBox(height: 20),
-                const Time(),
+                Time(updating: widget.task != null ? true : false),
                 const SizedBox(height: 20),
-                const Priority(),
+                Priority(updating: widget.task != null ? true : false),
                 const SizedBox(height: 20),
                 AddTaskButton(
                   submit: widget.task == null

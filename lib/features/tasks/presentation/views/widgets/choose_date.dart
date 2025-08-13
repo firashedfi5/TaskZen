@@ -6,7 +6,9 @@ import 'package:task_management_app/core/utils/service_locator.dart';
 import 'package:task_management_app/features/tasks/presentation/manager/new_task_cubit/new_task_cubit.dart';
 
 class ChooseDate extends StatefulWidget {
-  const ChooseDate({super.key});
+  const ChooseDate({super.key, this.updating = false});
+
+  final bool updating;
 
   @override
   State<ChooseDate> createState() => _ChooseDateState();
@@ -15,6 +17,15 @@ class ChooseDate extends StatefulWidget {
 class _ChooseDateState extends State<ChooseDate> {
   DateTime today = getIt.get<DateTime>();
   DateTime focusedDay = getIt.get<DateTime>();
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.updating == true) {
+      focusedDay = BlocProvider.of<NewTaskCubit>(context).date;
+      today = BlocProvider.of<NewTaskCubit>(context).date;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
