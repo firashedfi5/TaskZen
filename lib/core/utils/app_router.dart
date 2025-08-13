@@ -27,7 +27,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kNewTaskScreen,
-        builder: (context, state) => const NewTaskScreen(),
+        builder: (context, state) {
+          final TaskModel? task = state.extra as TaskModel?;
+          return NewTaskScreen(task: task);
+        },
       ),
       GoRoute(
         path: kTaskScreen,

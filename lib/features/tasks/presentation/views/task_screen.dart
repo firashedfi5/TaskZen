@@ -16,8 +16,9 @@ class TaskScreen extends StatelessWidget {
         title: const Text('Task Screen'),
         actions: [
           IconButton(
-            onPressed: () =>
-                GoRouter.of(context).push(AppRouter.kNewTaskScreen),
+            onPressed: () => GoRouter.of(
+              context,
+            ).push(AppRouter.kNewTaskScreen, extra: task),
             icon: const Icon(Icons.edit),
           ),
         ],

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -14,7 +16,9 @@ import 'package:task_management_app/features/tasks/presentation/views/widgets/ti
 import 'package:uuid/uuid.dart';
 
 class NewTaskScreenBody extends StatefulWidget {
-  const NewTaskScreenBody({super.key});
+  const NewTaskScreenBody({super.key, this.task});
+
+  final TaskModel? task;
 
   @override
   State<NewTaskScreenBody> createState() => _NewTaskScreenBodyState();
@@ -24,6 +28,21 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.task != null) {
+      titleController.text = widget.task!.title ?? '';
+      descriptionController.text = widget.task!.description ?? '';
+
+      // Initialize cubit with existing task data
+      // WidgetsBinding.instance.addPostFrameCallback((_) {
+      //   final cubit = BlocProvider.of<NewTaskCubit>(context);
+      //   cubit.initializeWithTask(widget.task!);
+      // });
+    }
+  }
 
   @override
   void dispose() {
@@ -90,36 +109,40 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
                 const Priority(),
                 const SizedBox(height: 20),
                 AddTaskButton(
-                  createTask: () {
-                    final isValid = _formKey.currentState!.validate();
-                    if (isValid) {
-                      String priority = BlocProvider.of<NewTaskCubit>(
-                        context,
-                      ).priority;
-                      DateTime date = BlocProvider.of<NewTaskCubit>(
-                        context,
-                      ).date;
-                      TimeOfDay startTime = BlocProvider.of<NewTaskCubit>(
-                        context,
-                      ).startTime;
-                      TimeOfDay endTime = BlocProvider.of<NewTaskCubit>(
-                        context,
-                      ).endTime;
+                  submit: widget.task == null
+                      ? () {
+                          final isValid = _formKey.currentState!.validate();
+                          if (isValid) {
+                            String priority = BlocProvider.of<NewTaskCubit>(
+                              context,
+                            ).priority;
+                            DateTime date = BlocProvider.of<NewTaskCubit>(
+                              context,
+                            ).date;
+                            TimeOfDay startTime = BlocProvider.of<NewTaskCubit>(
+                              context,
+                            ).startTime;
+                            TimeOfDay endTime = BlocProvider.of<NewTaskCubit>(
+                              context,
+                            ).endTime;
 
-                      BlocProvider.of<NewTaskCubit>(context).createTask(
-                        task: TaskModel(
-                          id: 1,
-                          userId: getIt.get<Uuid>().v4(),
-                          title: titleController.text,
-                          description: descriptionController.text,
-                          priority: priority,
-                          date: date,
-                          startTime: startTime,
-                          endTime: endTime,
-                        ),
-                      );
-                    }
-                  },
+                            BlocProvider.of<NewTaskCubit>(context).createTask(
+                              task: TaskModel(
+                                id: 1,
+                                userId: getIt.get<Uuid>().v4(),
+                                title: titleController.text,
+                                description: descriptionController.text,
+                                priority: priority,
+                                date: date,
+                                startTime: startTime,
+                                endTime: endTime,
+                              ),
+                            );
+                          }
+                        }
+                      : () {
+                          log('Updating task');
+                        },
                 ),
               ],
             ),
