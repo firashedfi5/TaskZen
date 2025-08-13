@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:task_management_app/core/constants.dart';
 import 'package:task_management_app/core/utils/styles.dart';
 import 'package:task_management_app/features/home/presentation/manager/get_tasks_count_cubit/get_tasks_count_cubit.dart';
 
@@ -24,7 +25,7 @@ class TasksNumber extends StatelessWidget {
                     TextSpan(
                       text: '${state.tasksCount.toString()} tasks',
                       style: const TextStyle(
-                        color: Colors.blue,
+                        color: kPrimaryColor,
                         fontWeight: FontWeight.w800,
                       ),
                     ),

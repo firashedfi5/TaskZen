@@ -41,7 +41,7 @@ class _StatusBarState extends State<StatusBar> {
 
     return FilterChip(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-      side: BorderSide(color: isSelected ? kSecondaryColor : Colors.black),
+      side: BorderSide(color: isSelected ? kPrimaryColor : Colors.black),
       label: Text(
         status,
         style: isSelected
@@ -64,7 +64,7 @@ class _StatusBarState extends State<StatusBar> {
           BlocProvider.of<FilteringCubit>(context).resetToInitial();
         }
       },
-      selectedColor: kSecondaryColor,
+      selectedColor: kPrimaryColor,
     );
   }
 }

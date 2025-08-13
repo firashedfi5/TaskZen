@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
       body: const HomeScreenBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: () => GoRouter.of(context).push(AppRouter.kNewTaskScreen),
-        backgroundColor: kSecondaryColor,
+        backgroundColor: kPrimaryColor,
         child: const Icon(Icons.add, size: 34, color: Colors.white),
       ),
     );

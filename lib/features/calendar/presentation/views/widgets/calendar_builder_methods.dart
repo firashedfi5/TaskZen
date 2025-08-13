@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_management_app/core/constants.dart';
 
 Widget buildTaskDots(int taskCount) {
   if (taskCount == 0) return const SizedBox.shrink();
@@ -11,7 +12,7 @@ Widget buildTaskDots(int taskCount) {
   //       height: 15,
   //       width: 15,
   //       decoration: BoxDecoration(
-  //         color: selectedDate == true ? Colors.deepOrangeAccent : Colors.blue,
+  //         color: selectedDate == true ? Colors.deepOrangeAccent : kPrimaryColor,
   //         borderRadius: BorderRadius.circular(6),
   //       ),
   //       child: Center(
@@ -59,7 +60,7 @@ Widget buildTaskDots(int taskCount) {
   //       width: 5,
   //       height: 5,
   //       decoration: BoxDecoration(
-  //         color: selectedDate == true ? Colors.white : Colors.blue,
+  //         color: selectedDate == true ? Colors.white : kPrimaryColor,
   //         shape: BoxShape.circle,
   //       ),
   //     );
@@ -106,7 +107,10 @@ Widget buildSelectedDay(
     height: 40,
     width: 40,
     // padding: const EdgeInsets.all(10),
-    decoration: const BoxDecoration(color: Colors.blue, shape: BoxShape.circle),
+    decoration: const BoxDecoration(
+      color: kPrimaryColor,
+      shape: BoxShape.circle,
+    ),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -139,7 +143,7 @@ Widget buildTodayDay(
     height: 40,
     // padding: const EdgeInsets.all(10),
     decoration: BoxDecoration(
-      color: Colors.blue.withValues(alpha: 0.25),
+      color: kPrimaryColor.withValues(alpha: 0.25),
       shape: BoxShape.circle,
     ),
     child: Column(

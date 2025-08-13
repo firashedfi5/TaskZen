@@ -12,7 +12,7 @@ class AddTaskButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         fixedSize: Size(MediaQuery.of(context).size.width, 45),
-        backgroundColor: kSecondaryColor,
+        backgroundColor: kPrimaryColor,
         foregroundColor: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
         textStyle: Styles.textStyle16,

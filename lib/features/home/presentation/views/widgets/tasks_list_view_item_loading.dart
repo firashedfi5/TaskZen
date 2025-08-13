@@ -21,7 +21,7 @@ class TasksListViewItemLoading extends StatelessWidget {
       aspectRatio: aspectRatio,
       child: Container(
         decoration: BoxDecoration(
-          color: kSecondaryColor.withAlpha(65),
+          color: kPrimaryColor.withAlpha(65),
           // border: Border.all(width: 1, color: Colors.black),
           borderRadius: BorderRadius.circular(16),
         ),
