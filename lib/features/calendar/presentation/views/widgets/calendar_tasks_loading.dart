@@ -3,8 +3,8 @@ import 'package:skeletonizer/skeletonizer.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/tasks_list_view_item_loading.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 
-class CalendarTasksLoading extends StatelessWidget {
-  const CalendarTasksLoading({super.key});
+class CalendarTasksListViewLoading extends StatelessWidget {
+  const CalendarTasksListViewLoading({super.key});
 
   @override
   Widget build(BuildContext context) {

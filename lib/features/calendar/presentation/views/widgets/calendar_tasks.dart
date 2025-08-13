@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/core/utils/functions/custom_snack_bar.dart';
 import 'package:task_management_app/core/utils/functions/date_comparaison.dart';
-import 'package:task_management_app/features/calendar/presentation/manager/calendar_cubit/calendar_cubit.dart';
+import 'package:task_management_app/features/calendar/presentation/manager/calendar_tasks_cubit/calendar_tasks_cubit.dart';
 import 'package:task_management_app/features/calendar/presentation/views/widgets/calendar_tasks_loading.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/tasks_list_view_item.dart';
 
@@ -11,9 +11,9 @@ class CalendarTasks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<CalendarCubit, CalendarState>(
+    return BlocConsumer<CalendarTasksCubit, CalendarTasksState>(
       listener: (context, state) {
-        if (state is CalendarFailure) {
+        if (state is CalendarTasksFailure) {
           customSnackBar(
             context: context,
             errMessage: state.errMessage,
@@ -22,11 +22,11 @@ class CalendarTasks extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        if (state is CalendarSuccess) {
+        if (state is CalendarTasksSuccess) {
           final tasksForDate = state.tasks.where((task) {
             return isSameDay(
               task.date!,
-              BlocProvider.of<CalendarCubit>(context).focusedDay,
+              BlocProvider.of<CalendarTasksCubit>(context).focusedDay,
             );
           }).toList();
           if (tasksForDate.isEmpty) {
@@ -58,12 +58,12 @@ class CalendarTasks extends StatelessWidget {
               ),
             ),
           );
-        } else if (state is CalendarFailure) {
+        } else if (state is CalendarTasksFailure) {
           return const Center(
             child: Icon(Icons.error, color: Colors.red, size: 30),
           );
         } else {
-          return const CalendarTasksLoading();
+          return const CalendarTasksListViewLoading();
         }
       },
     );

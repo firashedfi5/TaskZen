@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:task_management_app/core/utils/service_locator.dart';
-import 'package:task_management_app/features/calendar/presentation/manager/calendar_cubit/calendar_cubit.dart';
+import 'package:task_management_app/features/calendar/presentation/manager/calendar_tasks_cubit/calendar_tasks_cubit.dart';
 
 class Calendar extends StatefulWidget {
   const Calendar({super.key});
@@ -35,9 +35,10 @@ class _CalendarState extends State<Calendar> {
               today = selectedDay;
               focusedDay = newFocusedDay;
             });
-            BlocProvider.of<CalendarCubit>(context).focusedDay = focusedDay;
+            BlocProvider.of<CalendarTasksCubit>(context).focusedDay =
+                focusedDay;
 
-            BlocProvider.of<CalendarCubit>(
+            BlocProvider.of<CalendarTasksCubit>(
               context,
             ).fetchTasksByDate(focusedDay);
           },

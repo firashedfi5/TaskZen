@@ -5,10 +5,11 @@ import 'package:task_management_app/features/calendar/data/repos/calendar_repo.d
 import 'package:task_management_app/features/home/data/repos/home_repo.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 
-part 'calendar_state.dart';
+part 'calendar_tasks_state.dart';
 
-class CalendarCubit extends Cubit<CalendarState> {
-  CalendarCubit(this.homeRepo, this.calendarRepo) : super(CalendarInitial());
+class CalendarTasksCubit extends Cubit<CalendarTasksState> {
+  CalendarTasksCubit(this.homeRepo, this.calendarRepo)
+    : super(CalendarTasksInitial());
   final HomeRepo homeRepo;
   final CalendarRepo calendarRepo;
 
@@ -16,30 +17,30 @@ class CalendarCubit extends Cubit<CalendarState> {
 
   // TODO: Make a method in the backend to only fetch tasks for specific day
   Future<void> fetchTasksByDate(DateTime date) async {
-    emit(CalendarLoading());
+    emit(CalendarTasksLoading());
     // await Future.delayed(const Duration(seconds: 5));
     var result = await homeRepo.fetchTasksByDate(date);
     result.fold(
       (failure) {
-        emit(CalendarFailure(failure.message));
+        emit(CalendarTasksFailure(failure.message));
       },
       (tasks) {
-        emit(CalendarSuccess(tasks));
+        emit(CalendarTasksSuccess(tasks));
       },
     );
   }
 
-  Future<void> fetchAllTasks() async {
-    emit(CalendarLoading());
-    // await Future.delayed(const Duration(seconds: 5));
-    var result = await calendarRepo.fetchAllTasks();
-    result.fold(
-      (failure) {
-        emit(CalendarFailure(failure.message));
-      },
-      (tasks) {
-        emit(CalendarSuccess(tasks));
-      },
-    );
-  }
+  // Future<void> fetchAllTasks() async {
+  //   emit(CalendarLoading());
+  //   // await Future.delayed(const Duration(seconds: 5));
+  //   var result = await calendarRepo.fetchAllTasks();
+  //   result.fold(
+  //     (failure) {
+  //       emit(CalendarAllTasksFailure(failure.message));
+  //     },
+  //     (tasks) {
+  //       emit(CalendarAllTasksSuccess(tasks));
+  //     },
+  //   );
+  // }
 }
