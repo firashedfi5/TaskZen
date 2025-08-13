@@ -30,7 +30,7 @@ class CustomTextFormField extends StatelessWidget {
         labelText: name,
         floatingLabelStyle: Styles.textStyle20.copyWith(
           fontWeight: FontWeight.w500,
-          color: Colors.black,
+          // color: Colors.black,
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),

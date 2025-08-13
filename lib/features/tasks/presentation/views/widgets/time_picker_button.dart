@@ -37,7 +37,7 @@ class _TimePickerButtonState extends State<TimePickerButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        foregroundColor: Colors.black,
+        // foregroundColor: Colors.black,
         textStyle: Styles.textStyle16,
         fixedSize: Size(MediaQuery.of(context).size.width * .43, 45),
         side: const BorderSide(color: Colors.grey, width: 1),

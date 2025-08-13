@@ -13,7 +13,7 @@ class NewTaskScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => NewTaskCubit(getIt.get<TaskRepoImpl>()),
       child: Scaffold(
-        appBar: AppBar(title: const Text('New task')),
+        appBar: AppBar(title: const Text('New Task')),
         body: const NewTaskScreenBody(),
       ),
     );
