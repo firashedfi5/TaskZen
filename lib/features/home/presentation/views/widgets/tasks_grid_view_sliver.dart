@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:task_management_app/core/utils/app_router.dart';
 import 'package:task_management_app/features/home/presentation/views/widgets/tasks_list_view_item.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 
@@ -11,10 +13,15 @@ class TasksGridViewSliver extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverGrid(
       delegate: SliverChildBuilderDelegate(
-        (context, index) => TasksListViewItem(
-          taskModel: tasks[index],
-          aspectRatio: 3 / 3,
-          maxLines: 2,
+        (context, index) => GestureDetector(
+          onTap: () => GoRouter.of(
+            context,
+          ).push(AppRouter.kTaskScreen, extra: tasks[index]),
+          child: TasksListViewItem(
+            taskModel: tasks[index],
+            aspectRatio: 3 / 3,
+            maxLines: 2,
+          ),
         ),
         childCount: tasks.length,
       ),

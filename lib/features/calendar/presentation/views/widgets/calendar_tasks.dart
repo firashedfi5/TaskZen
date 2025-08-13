@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:task_management_app/core/utils/app_router.dart';
 import 'package:task_management_app/core/utils/functions/custom_snack_bar.dart';
 import 'package:task_management_app/core/utils/functions/date_comparaison.dart';
 import 'package:task_management_app/features/calendar/presentation/manager/calendar_tasks_cubit/calendar_tasks_cubit.dart';
@@ -49,10 +51,15 @@ class CalendarTasks extends StatelessWidget {
                 childCount: tasksForDate.length,
                 (context, index) => Padding(
                   padding: const EdgeInsets.only(bottom: 10),
-                  child: TasksListViewItem(
-                    taskModel: tasksForDate[index],
-                    aspectRatio: 3 / 1.2,
-                    maxLines: 1,
+                  child: GestureDetector(
+                    onTap: () => GoRouter.of(
+                      context,
+                    ).push(AppRouter.kTaskScreen, extra: tasksForDate[index]),
+                    child: TasksListViewItem(
+                      taskModel: tasksForDate[index],
+                      aspectRatio: 3 / 1.2,
+                      maxLines: 1,
+                    ),
                   ),
                 ),
               ),
