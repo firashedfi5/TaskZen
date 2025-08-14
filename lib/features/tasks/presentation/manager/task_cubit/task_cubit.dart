@@ -36,6 +36,7 @@ class TaskCubit extends Cubit<TaskState> {
     startTime = task.startTime!;
     endTime = task.endTime!;
     priority = task.priority!;
+    status = task.status!;
 
     emit(UpdateTaskInitial(task));
   }
