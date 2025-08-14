@@ -41,7 +41,6 @@ class TaskModel {
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
       'userId': userId,
       'title': title,
       'description': description,
@@ -49,7 +48,7 @@ class TaskModel {
       'date': date?.toIso8601String().split('T').first,
       'startTime': formatTimeOfDay(startTime!),
       'endTime': formatTimeOfDay(endTime!),
-      'status': 'To Do',
+      'status': status,
     };
   }
 }

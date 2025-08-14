@@ -12,10 +12,13 @@ class NewTaskCubit extends Cubit<NewTaskState> {
   NewTaskCubit(this.taskRepo) : super(TaskInitial());
 
   final TaskRepo taskRepo;
+  int? id;
+  String? userId;
   String priority = 'Low';
   DateTime date = getIt.get<DateTime>();
   TimeOfDay startTime = TimeOfDay.now();
   TimeOfDay endTime = TimeOfDay.now();
+  String status = 'To Do';
 
   Future<void> createTask({required TaskModel task}) async {
     emit(TaskLoading());
@@ -27,6 +30,8 @@ class NewTaskCubit extends Cubit<NewTaskState> {
   }
 
   void initializeWithTask(TaskModel task) {
+    id = task.id!;
+    userId = task.userId!;
     date = task.date!;
     startTime = task.startTime!;
     endTime = task.endTime!;
