@@ -36,14 +36,11 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
       titleController.text = widget.task!.title!;
       descriptionController.text = widget.task!.description!;
 
-      BlocProvider.of<NewTaskCubit>(context).priority = widget.task!.priority!;
-
-      BlocProvider.of<NewTaskCubit>(context).date = widget.task!.date!;
-
-      BlocProvider.of<NewTaskCubit>(context).startTime =
-          widget.task!.startTime!;
-
-      BlocProvider.of<NewTaskCubit>(context).endTime = widget.task!.endTime!;
+      //! Initialize cubit with task data after first frame to ensure safe context access.
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        final cubit = BlocProvider.of<NewTaskCubit>(context);
+        cubit.initializeWithTask(widget.task!);
+      });
     }
   }
 
@@ -91,7 +88,7 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text('Select Date', style: Styles.textStyle18),
-                ChooseDate(updating: widget.task != null ? true : false),
+                const ChooseDate(),
                 const SizedBox(height: 20),
                 CustomTextFormField(
                   name: 'Title',
@@ -107,9 +104,9 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
                   validationText: 'Please enter a description',
                 ),
                 const SizedBox(height: 20),
-                Time(updating: widget.task != null ? true : false),
+                const Time(),
                 const SizedBox(height: 20),
-                Priority(updating: widget.task != null ? true : false),
+                const Priority(),
                 const SizedBox(height: 20),
                 AddTaskButton(
                   submit: widget.task == null

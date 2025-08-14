@@ -5,9 +5,7 @@ import 'package:task_management_app/core/utils/styles.dart';
 import 'package:task_management_app/features/tasks/presentation/manager/new_task_cubit/new_task_cubit.dart';
 
 class Priority extends StatefulWidget {
-  const Priority({super.key, this.updating = false});
-
-  final bool updating;
+  const Priority({super.key});
 
   @override
   State<Priority> createState() => _PriorityState();
@@ -23,57 +21,56 @@ class _PriorityState extends State<Priority> {
   ];
 
   @override
-  void initState() {
-    super.initState();
-    if (widget.updating == true) {
-      selectedPriority = BlocProvider.of<NewTaskCubit>(context).priority;
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text('Priority', style: Styles.textStyle18),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: priorities
-              .map(
-                (priority) => Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: FilterChip(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
+    return BlocBuilder<NewTaskCubit, NewTaskState>(
+      builder: (context, state) {
+        if (state is TaskInitializedForUpdating) {
+          selectedPriority = state.task.priority!;
+        }
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('Priority', style: Styles.textStyle18),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: priorities
+                  .map(
+                    (priority) => Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: FilterChip(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        side: BorderSide(color: priority['color']),
+                        label: Text(
+                          priority['name'],
+                          style: selectedPriority == priority['name']
+                              ? const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                )
+                              : null,
+                        ),
+                        checkmarkColor: selectedPriority == priority['name']
+                            ? Colors.white
+                            : null,
+                        selected: selectedPriority == priority['name'],
+                        selectedColor: priority['color'],
+                        onSelected: (value) {
+                          setState(() {
+                            selectedPriority = value ? priority['name'] : null;
+                          });
+                          BlocProvider.of<NewTaskCubit>(context).priority =
+                              selectedPriority ?? '';
+                        },
+                      ),
                     ),
-                    side: BorderSide(color: priority['color']),
-                    label: Text(
-                      priority['name'],
-                      style: selectedPriority == priority['name']
-                          ? const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            )
-                          : null,
-                    ),
-                    checkmarkColor: selectedPriority == priority['name']
-                        ? Colors.white
-                        : null,
-                    selected: selectedPriority == priority['name'],
-                    selectedColor: priority['color'],
-                    onSelected: (value) {
-                      setState(() {
-                        selectedPriority = value ? priority['name'] : null;
-                      });
-                      BlocProvider.of<NewTaskCubit>(context).priority =
-                          selectedPriority ?? '';
-                    },
-                  ),
-                ),
-              )
-              .toList(),
-        ),
-      ],
+                  )
+                  .toList(),
+            ),
+          ],
+        );
+      },
     );
   }
 }
