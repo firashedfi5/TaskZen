@@ -33,20 +33,6 @@ class _TimePickerButtonState extends State<TimePickerButton> {
     }
   }
 
-  // @override
-  // void didChangeDependencies() {
-  //   super.didChangeDependencies();
-
-  //   final cubit = BlocProvider.of<NewTaskCubit>(context);
-
-  //   // Get time from cubit or use current time as default
-  //   if (widget.startTime == true) {
-  //     _timeOfDay = cubit.startTime;
-  //   } else {
-  //     _timeOfDay = cubit.endTime;
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<NewTaskCubit, NewTaskState>(

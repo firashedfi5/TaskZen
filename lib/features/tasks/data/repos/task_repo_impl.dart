@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:task_management_app/core/errors/failure.dart';
@@ -30,19 +32,25 @@ class TaskRepoImpl implements TaskRepo {
     throw UnimplementedError();
   }
 
-  @override
-  Future<Either<Failure, TaskModel>> getTaskById(int id, String userId) {
-    // TODO: implement getTaskById
-    throw UnimplementedError();
-  }
+  // @override
+  // Future<Either<Failure, TaskModel>> getTaskById(int id, String userId) {
+  //   throw UnimplementedError();
+  // }
 
   @override
-  Future<Either<Failure, TaskModel>> updateTask(
-    int id,
+  Future<Either<Failure, Unit>> updateTask(
     TaskModel task,
-    String userId,
-  ) {
-    // TODO: implement updateTask
-    throw UnimplementedError();
+    // String userId,
+  ) async {
+    try {
+      log('Updated task data: ${task.toJson()}');
+      await apiService.put(endPoint: '/tasks/${task.id}', data: task.toJson());
+      return right(unit);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
   }
 }

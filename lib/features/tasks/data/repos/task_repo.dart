@@ -3,20 +3,19 @@ import 'package:task_management_app/core/errors/failure.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 
 abstract class TaskRepo {
-  Future<Either<Failure, TaskModel>> getTaskById(
-    int id,
-    String userId,
-  ); //* / GET /tasks/:id
+  // Future<Either<Failure, TaskModel>> getTaskById(
+  //   int id,
+  //   String userId,
+  // ); //* / GET /tasks/:id
 
   Future<Either<Failure, Unit>> createTask(TaskModel task); //* POST /tasks
 
-  Future<Either<Failure, TaskModel>> updateTask(
-    int id,
+  //* PUT /tasks/:id
+  Future<Either<Failure, Unit>> updateTask(
     TaskModel task,
-    String userId,
-  ); //* PATCH /tasks/:id
-  Future<Either<Failure, void>> deleteTask(
-    int id,
-    String userId,
-  ); //* DELETE /tasks/:id
+    // String userId,
+  );
+
+  //* DELETE /tasks/:id
+  Future<Either<Failure, void>> deleteTask(int id, String userId);
 }

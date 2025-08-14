@@ -18,4 +18,12 @@ class ApiService {
     var response = await _dio.get('$_baseUrl$endPoint');
     return response.data;
   }
+
+  Future<Response> put({
+    required String endPoint,
+    Map<String, dynamic>? data,
+  }) async {
+    var response = await _dio.put('$_baseUrl$endPoint', data: data);
+    return response;
+  }
 }
