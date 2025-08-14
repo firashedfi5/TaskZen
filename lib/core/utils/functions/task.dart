@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/core/utils/service_locator.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
-import 'package:task_management_app/features/tasks/presentation/manager/new_task_cubit/new_task_cubit.dart';
-import 'package:task_management_app/features/tasks/presentation/manager/update_cubit/update_task_cubit.dart';
+import 'package:task_management_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
 import 'package:uuid/uuid.dart';
 
 void createTask(
@@ -15,7 +14,7 @@ void createTask(
   final isValid = formKey.currentState!.validate();
   if (!isValid) return;
 
-  final cubit = BlocProvider.of<NewTaskCubit>(context);
+  final cubit = BlocProvider.of<TaskCubit>(context);
 
   cubit.createTask(
     task: TaskModel(
@@ -36,9 +35,9 @@ void updateTask(
   TextEditingController titleController,
   TextEditingController descriptionController,
 ) {
-  final cubit = BlocProvider.of<NewTaskCubit>(context);
+  final cubit = BlocProvider.of<TaskCubit>(context);
 
-  BlocProvider.of<UpdateTaskCubit>(context).updateTask(
+  BlocProvider.of<TaskCubit>(context).updateTask(
     task: TaskModel(
       id: cubit.id,
       userId: cubit.userId,

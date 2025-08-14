@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/core/utils/styles.dart';
-import 'package:task_management_app/features/tasks/presentation/manager/new_task_cubit/new_task_cubit.dart';
+import 'package:task_management_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
 
 class TimePickerButton extends StatefulWidget {
   const TimePickerButton({super.key, required this.startTime});
@@ -26,7 +26,7 @@ class _TimePickerButtonState extends State<TimePickerButton> {
 
     setState(() => _timeOfDay = selectedTime);
 
-    final cubit = BlocProvider.of<NewTaskCubit>(context);
+    final cubit = BlocProvider.of<TaskCubit>(context);
     if (widget.startTime == true) {
       cubit.startTime = selectedTime;
     } else {
@@ -36,9 +36,9 @@ class _TimePickerButtonState extends State<TimePickerButton> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NewTaskCubit, NewTaskState>(
+    return BlocBuilder<TaskCubit, TaskState>(
       builder: (context, state) {
-        if (!_initialized && state is TaskInitializedForUpdating) {
+        if (!_initialized && state is UpdateTaskInitial) {
           if (widget.startTime) {
             _timeOfDay = state.task.startTime ?? TimeOfDay.now();
           } else {

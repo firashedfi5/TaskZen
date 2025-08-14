@@ -5,7 +5,7 @@ import 'package:task_management_app/core/utils/functions/custom_snack_bar.dart';
 import 'package:task_management_app/core/utils/functions/task.dart';
 import 'package:task_management_app/core/utils/styles.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
-import 'package:task_management_app/features/tasks/presentation/manager/new_task_cubit/new_task_cubit.dart';
+import 'package:task_management_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
 import 'package:task_management_app/features/tasks/presentation/views/widgets/add_task_button.dart';
 import 'package:task_management_app/features/tasks/presentation/views/widgets/choose_date.dart';
 import 'package:task_management_app/features/tasks/presentation/views/widgets/custom_text_form_field.dart';
@@ -35,7 +35,7 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
 
       //! Initialize cubit with task data after first frame to ensure safe context access.
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        final cubit = BlocProvider.of<NewTaskCubit>(context);
+        final cubit = BlocProvider.of<TaskCubit>(context);
         cubit.initializeWithTask(widget.task!);
       });
     }
@@ -50,16 +50,16 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<NewTaskCubit, NewTaskState>(
+    return BlocListener<TaskCubit, TaskState>(
       listener: (context, state) {
-        if (state is TaskLoading) {
+        if (state is NewTaskLoading || state is UpdateTaskLoading) {
           showDialog(
             context: context,
             barrierDismissible: false,
             builder: (context) =>
                 const Center(child: CircularProgressIndicator()),
           );
-        } else if (state is TaskSuccess) {
+        } else if (state is NewTaskSuccess) {
           Navigator.of(context).pop();
           GoRouter.of(context).pop();
           customSnackBar(
@@ -67,7 +67,22 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
             errMessage: state.successMessage,
             success: true,
           );
-        } else if (state is TaskFailure) {
+        } else if (state is UpdateTaskSuccess) {
+          Navigator.of(context).pop();
+          GoRouter.of(context).pop();
+          customSnackBar(
+            context: context,
+            errMessage: state.successMessage,
+            success: true,
+          );
+        } else if (state is NewTaskFailure) {
+          Navigator.of(context).pop();
+          customSnackBar(
+            context: context,
+            errMessage: state.errMessage,
+            success: false,
+          );
+        } else if (state is UpdateTaskFailure) {
           Navigator.of(context).pop();
           customSnackBar(
             context: context,
@@ -106,6 +121,7 @@ class _NewTaskScreenBodyState extends State<NewTaskScreenBody> {
                 const Priority(),
                 const SizedBox(height: 20),
                 AddTaskButton(
+                  updating: widget.task != null ? true : false,
                   submit: () {
                     if (widget.task == null) {
                       createTask(

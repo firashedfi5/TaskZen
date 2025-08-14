@@ -3,9 +3,10 @@ import 'package:task_management_app/core/constants.dart';
 import 'package:task_management_app/core/utils/styles.dart';
 
 class AddTaskButton extends StatelessWidget {
-  const AddTaskButton({super.key, required this.submit});
+  const AddTaskButton({super.key, required this.submit, this.updating = false});
 
   final VoidCallback submit;
+  final bool updating;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class AddTaskButton extends StatelessWidget {
         textStyle: Styles.textStyle16,
       ),
       onPressed: submit,
-      child: const Text('Add Task'),
+      child: Text(updating == true ? 'Update Task' : 'Add Task'),
     );
   }
 }

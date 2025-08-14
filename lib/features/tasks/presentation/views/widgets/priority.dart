@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management_app/core/constants.dart';
 import 'package:task_management_app/core/utils/styles.dart';
-import 'package:task_management_app/features/tasks/presentation/manager/new_task_cubit/new_task_cubit.dart';
+import 'package:task_management_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
 
 class Priority extends StatefulWidget {
   const Priority({super.key});
@@ -23,9 +23,9 @@ class _PriorityState extends State<Priority> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NewTaskCubit, NewTaskState>(
+    return BlocBuilder<TaskCubit, TaskState>(
       builder: (context, state) {
-        if (!_initialized && state is TaskInitializedForUpdating) {
+        if (!_initialized && state is UpdateTaskInitial) {
           selectedPriority = state.task.priority;
           _initialized = true;
         }
@@ -62,7 +62,7 @@ class _PriorityState extends State<Priority> {
                           setState(() {
                             selectedPriority = value ? priority['name'] : null;
                           });
-                          BlocProvider.of<NewTaskCubit>(context).priority =
+                          BlocProvider.of<TaskCubit>(context).priority =
                               selectedPriority ?? '';
                         },
                       ),

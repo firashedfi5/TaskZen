@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:task_management_app/core/constants.dart';
 import 'package:task_management_app/core/utils/service_locator.dart';
-import 'package:task_management_app/features/tasks/presentation/manager/new_task_cubit/new_task_cubit.dart';
+import 'package:task_management_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
 
 class ChooseDate extends StatefulWidget {
   const ChooseDate({super.key});
@@ -19,9 +19,9 @@ class _ChooseDateState extends State<ChooseDate> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NewTaskCubit, NewTaskState>(
+    return BlocBuilder<TaskCubit, TaskState>(
       builder: (context, state) {
-        if (!_initialized && state is TaskInitializedForUpdating) {
+        if (!_initialized && state is UpdateTaskInitial) {
           focusedDay = state.task.date!;
           today = state.task.date!;
           _initialized = true;
@@ -56,7 +56,7 @@ class _ChooseDateState extends State<ChooseDate> {
               today = selectedDay;
               focusedDay = newFocusedDay;
             });
-            BlocProvider.of<NewTaskCubit>(context).date = selectedDay;
+            BlocProvider.of<TaskCubit>(context).date = selectedDay;
           },
         );
       },

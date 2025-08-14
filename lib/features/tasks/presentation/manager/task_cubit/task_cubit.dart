@@ -6,10 +6,10 @@ import 'package:task_management_app/core/utils/service_locator.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 import 'package:task_management_app/features/tasks/data/repos/task_repo.dart';
 
-part 'new_task_state.dart';
+part 'task_state.dart';
 
-class NewTaskCubit extends Cubit<NewTaskState> {
-  NewTaskCubit(this.taskRepo) : super(TaskInitial());
+class TaskCubit extends Cubit<TaskState> {
+  TaskCubit(this.taskRepo) : super(TaskInitial());
 
   final TaskRepo taskRepo;
   int? id;
@@ -21,10 +21,10 @@ class NewTaskCubit extends Cubit<NewTaskState> {
   String status = 'To Do';
 
   Future<void> createTask({required TaskModel task}) async {
-    emit(TaskLoading());
+    emit(NewTaskLoading());
     var result = await taskRepo.createTask(task);
-    result.fold((failure) => emit(TaskFailure(failure.message)), (success) {
-      emit(TaskSuccess('Task created successfully'));
+    result.fold((failure) => emit(NewTaskFailure(failure.message)), (success) {
+      emit(NewTaskSuccess('Task created successfully'));
       log('Task created successfully ✓');
     });
   }
@@ -37,6 +37,18 @@ class NewTaskCubit extends Cubit<NewTaskState> {
     endTime = task.endTime!;
     priority = task.priority!;
 
-    emit(TaskInitializedForUpdating(task));
+    emit(UpdateTaskInitial(task));
+  }
+
+  //* Update task method
+  Future<void> updateTask({required TaskModel task}) async {
+    emit(UpdateTaskLoading());
+    var result = await taskRepo.updateTask(task);
+    result.fold((failure) => emit(UpdateTaskFailure(failure.message)), (
+      success,
+    ) {
+      emit(UpdateTaskSuccess('Task updated successfully'));
+      log('Task updated successfully ✓');
+    });
   }
 }
