@@ -41,6 +41,7 @@ class TaskModel {
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'userId': userId,
       'title': title,
       'description': description,
