@@ -25,4 +25,13 @@ class NewTaskCubit extends Cubit<NewTaskState> {
       log('Task created successfully ✓');
     });
   }
+
+  void initializeWithTask(TaskModel task) {
+    date = task.date!;
+    startTime = task.startTime!;
+    endTime = task.endTime!;
+    priority = task.priority!;
+
+    emit(TaskInitializedForUpdating(task));
+  }
 }

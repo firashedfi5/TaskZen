@@ -18,3 +18,8 @@ final class TaskFailure extends NewTaskState {
 
   TaskFailure(this.errMessage);
 }
+
+class TaskInitializedForUpdating extends NewTaskState {
+  final TaskModel task;
+  TaskInitializedForUpdating(this.task);
+}
