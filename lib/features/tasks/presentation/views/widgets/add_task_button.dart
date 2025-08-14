@@ -15,7 +15,6 @@ class AddTaskButton extends StatelessWidget {
         fixedSize: Size(MediaQuery.of(context).size.width, 45),
         backgroundColor: kPrimaryColor,
         foregroundColor: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
         textStyle: Styles.textStyle16,
       ),
       onPressed: submit,

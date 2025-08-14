@@ -60,7 +60,7 @@ class TaskScreenBody extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.redAccent,
-                  fixedSize: Size(MediaQuery.of(context).size.width, 40),
+                  fixedSize: Size(MediaQuery.of(context).size.width, 45),
                 ),
                 label: const Text(
                   'Delete Task',
