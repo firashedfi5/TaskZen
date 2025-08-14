@@ -19,7 +19,7 @@ class TaskScreen extends StatelessWidget {
       create: (context) => TaskCubit(getIt.get<TaskRepoImpl>()),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Task Screen'),
+          title: const Text('Task Details'),
           actions: [
             IconButton(
               onPressed: () => GoRouter.of(

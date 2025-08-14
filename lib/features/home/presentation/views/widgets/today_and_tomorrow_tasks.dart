@@ -20,6 +20,7 @@ class TodayAndTomorrowTasks extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.22,
           child: TaskListView(date: getIt.get<DateTime>()),
         ),
+        const SizedBox(height: 10),
         Text(
           'Tomorrow\'s Tasks',
           style: Styles.textStyle24.copyWith(fontWeight: FontWeight.bold),
