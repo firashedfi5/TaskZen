@@ -13,6 +13,7 @@ class Priority extends StatefulWidget {
 
 class _PriorityState extends State<Priority> {
   String? selectedPriority;
+  bool _initialized = false;
 
   final List<Map<String, dynamic>> priorities = [
     {'name': 'High', 'color': kHighPriorityColor},
@@ -24,8 +25,9 @@ class _PriorityState extends State<Priority> {
   Widget build(BuildContext context) {
     return BlocBuilder<NewTaskCubit, NewTaskState>(
       builder: (context, state) {
-        if (state is TaskInitializedForUpdating) {
-          selectedPriority = state.task.priority!;
+        if (!_initialized && state is TaskInitializedForUpdating) {
+          selectedPriority = state.task.priority;
+          _initialized = true;
         }
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,

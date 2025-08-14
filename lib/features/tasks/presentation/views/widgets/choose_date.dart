@@ -15,14 +15,16 @@ class ChooseDate extends StatefulWidget {
 class _ChooseDateState extends State<ChooseDate> {
   DateTime today = getIt.get<DateTime>();
   DateTime focusedDay = getIt.get<DateTime>();
+  bool _initialized = false;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<NewTaskCubit, NewTaskState>(
       builder: (context, state) {
-        if (state is TaskInitializedForUpdating) {
+        if (!_initialized && state is TaskInitializedForUpdating) {
           focusedDay = state.task.date!;
           today = state.task.date!;
+          _initialized = true;
         }
         return TableCalendar(
           headerStyle: const HeaderStyle(

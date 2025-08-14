@@ -14,6 +14,7 @@ class TimePickerButton extends StatefulWidget {
 
 class _TimePickerButtonState extends State<TimePickerButton> {
   TimeOfDay _timeOfDay = TimeOfDay.now();
+  bool _initialized = false;
 
   Future<void> _showTimePicker() async {
     final TimeOfDay? selectedTime = await showTimePicker(
@@ -37,12 +38,13 @@ class _TimePickerButtonState extends State<TimePickerButton> {
   Widget build(BuildContext context) {
     return BlocBuilder<NewTaskCubit, NewTaskState>(
       builder: (context, state) {
-        if (state is TaskInitializedForUpdating) {
+        if (!_initialized && state is TaskInitializedForUpdating) {
           if (widget.startTime) {
             _timeOfDay = state.task.startTime ?? TimeOfDay.now();
           } else {
             _timeOfDay = state.task.endTime ?? TimeOfDay.now();
           }
+          _initialized = true;
         }
         return ElevatedButton(
           style: ElevatedButton.styleFrom(
