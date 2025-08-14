@@ -23,6 +23,4 @@ class GetTasksCubit extends Cubit<GetTasksState> {
       },
     );
   }
-
-  
 }
