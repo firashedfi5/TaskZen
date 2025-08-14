@@ -38,3 +38,18 @@ final class UpdateTaskFailure extends TaskState {
 
   UpdateTaskFailure(this.errMessage);
 }
+
+//* Delete task states
+final class DeleteTaskLoading extends TaskState {}
+
+final class DeleteTaskSuccess extends TaskState {
+  final String successMessage;
+
+  DeleteTaskSuccess(this.successMessage);
+}
+
+final class DeleteTaskFailure extends TaskState {
+  final String errMessage;
+
+  DeleteTaskFailure(this.errMessage);
+}

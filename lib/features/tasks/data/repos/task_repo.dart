@@ -17,5 +17,8 @@ abstract class TaskRepo {
   );
 
   //* DELETE /tasks/:id
-  Future<Either<Failure, void>> deleteTask(int id, String userId);
+  Future<Either<Failure, Unit>> deleteTask(
+    int id,
+    // String userId
+  );
 }

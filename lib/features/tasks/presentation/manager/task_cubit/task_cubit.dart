@@ -52,4 +52,16 @@ class TaskCubit extends Cubit<TaskState> {
       log('Task updated successfully ✓');
     });
   }
+
+  //* Delete task method
+  Future<void> deleteTask({required int id}) async {
+    emit(DeleteTaskLoading());
+    var result = await taskRepo.deleteTask(id);
+    result.fold((failure) => emit(DeleteTaskFailure(failure.message)), (
+      success,
+    ) {
+      emit(DeleteTaskSuccess('Task deleted successfully'));
+      log('Task deleted successfully ✓');
+    });
+  }
 }
