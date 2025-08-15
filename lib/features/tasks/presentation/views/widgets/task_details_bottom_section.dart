@@ -20,7 +20,7 @@ class TaskDetailsBottomSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: MediaQuery.of(context).size.height * 0.4,
+      height: MediaQuery.of(context).size.height * 0.38,
       child: Card(
         elevation: 8,
         shadowColor: Colors.black.withValues(alpha: 0.15),
@@ -33,7 +33,7 @@ class TaskDetailsBottomSection extends StatelessWidget {
               end: Alignment.bottomRight,
               colors: [
                 Colors.white,
-                kPrimaryColor.shade50.withValues(alpha: 0.3),
+                kPrimaryColor.shade100.withValues(alpha: 0.3),
               ],
             ),
           ),
@@ -45,7 +45,7 @@ class TaskDetailsBottomSection extends StatelessWidget {
                 // Date Section
                 TaskDetailsDateSection(date: date),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 16),
 
                 // Time Section
                 TaskDetailsTimeSection(startTime: startTime, endTime: endTime),

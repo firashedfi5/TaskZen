@@ -33,7 +33,7 @@ class TaskDetailsUpperSection extends StatelessWidget {
               end: Alignment.bottomRight,
               colors: [
                 Colors.white,
-                kPrimaryColor.shade50.withValues(alpha: 0.3),
+                kPrimaryColor.shade100.withValues(alpha: 0.3),
               ],
             ),
           ),
@@ -64,7 +64,7 @@ class TaskDetailsUpperSection extends StatelessWidget {
 
                 const TaskDetailsDescriptionSection(),
 
-                const SizedBox(height: 12),
+                const SizedBox(height: 8),
 
                 // Description text in scrollable container
                 TaskDetailsDescriptionText(description: description),

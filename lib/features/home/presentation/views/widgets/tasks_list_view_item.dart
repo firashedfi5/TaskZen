@@ -22,43 +22,57 @@ class TasksListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: aspectRatio,
-      child: Container(
-        decoration: BoxDecoration(
-          color: kPrimaryColor.withAlpha(65),
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                taskModel.title!,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-                style: Styles.textStyle18.copyWith(fontWeight: FontWeight.w600),
-              ),
+      child: Card(
+        elevation: 8,
+        shadowColor: Colors.black.withValues(alpha: .15),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                kPrimaryColor.withAlpha(65),
+                kPrimaryColor.shade50.withValues(alpha: 0.3),
+              ],
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  taskModel.title!,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  style: Styles.textStyle18.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
 
-              // const SizedBox(height: 8),
-              Text(
-                taskModel.description!,
-                overflow: TextOverflow.ellipsis,
-                maxLines: maxLines,
-                style: Styles.textStyle16,
-              ),
+                // const SizedBox(height: 8),
+                Text(
+                  taskModel.description!,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: maxLines,
+                  style: Styles.textStyle16,
+                ),
 
-              TimeContainer(taskModel: taskModel),
+                TimeContainer(taskModel: taskModel),
 
-              // const SizedBox(height: 8),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  DateContainer(taskModel: taskModel),
-                  PriorityContainer(taskModel: taskModel),
-                ],
-              ),
-            ],
+                // const SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    DateContainer(taskModel: taskModel),
+                    PriorityContainer(taskModel: taskModel),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
