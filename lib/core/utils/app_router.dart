@@ -4,7 +4,7 @@ import 'package:task_management_app/features/calendar/presentation/views/calenda
 import 'package:task_management_app/features/home/presentation/views/home_screen.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 import 'package:task_management_app/features/tasks/presentation/views/new_task_screen.dart';
-import 'package:task_management_app/features/tasks/presentation/views/task_screen.dart';
+import 'package:task_management_app/features/tasks/presentation/views/task_details_screen.dart';
 
 abstract class AppRouter {
   static const String kHomeScreen = '/homeScreen';
@@ -36,7 +36,7 @@ abstract class AppRouter {
         path: kTaskScreen,
         builder: (context, state) {
           final task = state.extra as TaskModel;
-          return TaskScreen(task: task);
+          return TaskDetailsScreen(task: task);
         },
       ),
     ],

@@ -7,8 +7,8 @@ import 'package:task_management_app/features/tasks/presentation/manager/task_cub
 import 'package:task_management_app/features/tasks/presentation/views/widgets/task_details_bottom_section.dart';
 import 'package:task_management_app/features/tasks/presentation/views/widgets/task_details_upper_section.dart';
 
-class TaskScreenBody extends StatelessWidget {
-  const TaskScreenBody({super.key, required this.task});
+class TaskDetailsScreenBody extends StatelessWidget {
+  const TaskDetailsScreenBody({super.key, required this.task});
 
   final TaskModel task;
 

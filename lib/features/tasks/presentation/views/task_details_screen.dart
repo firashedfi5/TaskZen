@@ -6,10 +6,10 @@ import 'package:task_management_app/core/utils/service_locator.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 import 'package:task_management_app/features/tasks/data/repos/task_repo_impl.dart';
 import 'package:task_management_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
-import 'package:task_management_app/features/tasks/presentation/views/widgets/task_screen_body.dart';
+import 'package:task_management_app/features/tasks/presentation/views/widgets/task_details_screen_body.dart';
 
-class TaskScreen extends StatelessWidget {
-  const TaskScreen({super.key, required this.task});
+class TaskDetailsScreen extends StatelessWidget {
+  const TaskDetailsScreen({super.key, required this.task});
 
   final TaskModel task;
 
@@ -29,7 +29,7 @@ class TaskScreen extends StatelessWidget {
             ),
           ],
         ),
-        body: TaskScreenBody(task: task),
+        body: TaskDetailsScreenBody(task: task),
       ),
     );
   }
