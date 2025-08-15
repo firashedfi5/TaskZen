@@ -50,9 +50,17 @@ class TaskScreenBody extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              TaskDetailsUpperSection(task: task),
+              TaskDetailsUpperSection(
+                title: task.title!,
+                description: task.description!,
+                priority: task.priority!,
+              ),
               const SizedBox(height: 8),
-              TaskDetailsBottomSection(task: task),
+              TaskDetailsBottomSection(
+                date: task.date!,
+                startTime: task.startTime!,
+                endTime: task.endTime!,
+              ),
               const SizedBox(height: 8),
               ElevatedButton.icon(
                 onPressed: () {

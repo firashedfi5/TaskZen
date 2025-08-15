@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:task_management_app/core/constants.dart';
 import 'package:task_management_app/core/utils/styles.dart';
-import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 
 class Header extends StatelessWidget {
-  const Header({super.key, required this.task});
+  const Header({super.key, required this.title, required this.priority});
 
-  final TaskModel task;
+  final String title;
+  final String priority;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class Header extends StatelessWidget {
       children: [
         Expanded(
           child: Text(
-            task.title!,
+            title,
             style: Styles.textStyle24.copyWith(
               fontWeight: FontWeight.w600,
               color: Colors.grey.shade800,
@@ -28,18 +28,18 @@ class Header extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           decoration: BoxDecoration(
-            color: task.priority! == 'High'
+            color: priority == 'High'
                 ? kHighPriorityColor
-                : task.priority! == 'Medium'
+                : priority == 'Medium'
                 ? kMediumPriorityColor
                 : kLowPriorityColor,
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
                 color:
-                    (task.priority! == 'High'
+                    (priority == 'High'
                             ? kHighPriorityColor
-                            : task.priority! == 'Medium'
+                            : priority == 'Medium'
                             ? kMediumPriorityColor
                             : kLowPriorityColor)
                         .withValues(alpha: .3),
@@ -51,9 +51,9 @@ class Header extends StatelessWidget {
           child: Row(
             children: [
               Icon(
-                task.priority! == 'High'
+                priority == 'High'
                     ? Icons.priority_high
-                    : task.priority! == 'Medium'
+                    : priority == 'Medium'
                     ? Icons.remove
                     : Icons.low_priority,
                 size: 14,
@@ -61,7 +61,7 @@ class Header extends StatelessWidget {
               ),
               const SizedBox(width: 4),
               Text(
-                task.priority!,
+                priority,
                 style: Styles.textStyle12.copyWith(
                   color: Colors.white,
                   fontWeight: FontWeight.w600,

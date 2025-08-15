@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 
 class TaskDetailsDescriptionText extends StatelessWidget {
-  const TaskDetailsDescriptionText({super.key, required this.task});
+  const TaskDetailsDescriptionText({super.key, required this.description});
 
-  final TaskModel task;
+  final String description;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +18,7 @@ class TaskDetailsDescriptionText extends StatelessWidget {
         ),
         child: SingleChildScrollView(
           child: Text(
-            task.description!,
+            description,
             style: const TextStyle(
               fontSize: 14,
               height: 1.5,

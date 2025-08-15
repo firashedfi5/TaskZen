@@ -85,7 +85,7 @@ Widget buildDefaultDay(
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('${day.day}', style: const TextStyle(fontSize: 16)),
+        Text('${day.day}', style: const TextStyle(fontSize: 14)),
         // const SizedBox(height: 2),
         buildTaskDots(taskCount),
       ],
@@ -117,7 +117,7 @@ Widget buildSelectedDay(
         Text(
           '${day.day}',
           style: const TextStyle(
-            fontSize: 16,
+            fontSize: 14,
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
@@ -151,7 +151,7 @@ Widget buildTodayDay(
       children: [
         Text(
           '${day.day}',
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
         ),
         // const SizedBox(height: 2),
         buildTaskDots(taskCount),
