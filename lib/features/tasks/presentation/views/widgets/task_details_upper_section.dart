@@ -9,12 +9,12 @@ class TaskDetailsUpperSection extends StatelessWidget {
     super.key,
     required this.title,
     required this.description,
-    required this.priority,
+    required this.status,
   });
 
   final String title;
   final String description;
-  final String priority;
+  final String status;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class TaskDetailsUpperSection extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Header(title: title, priority: priority),
+                Header(title: title, status: status),
 
                 const SizedBox(height: 16),
 

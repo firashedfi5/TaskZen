@@ -6,6 +6,7 @@ import 'package:task_management_app/core/utils/service_locator.dart';
 import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 import 'package:task_management_app/features/tasks/data/repos/task_repo_impl.dart';
 import 'package:task_management_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
+import 'package:task_management_app/features/tasks/presentation/views/widgets/task_details_priority_container.dart';
 import 'package:task_management_app/features/tasks/presentation/views/widgets/task_details_screen_body.dart';
 
 class TaskDetailsScreen extends StatelessWidget {
@@ -21,6 +22,8 @@ class TaskDetailsScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Task Details'),
           actions: [
+            TaskDetailsPriorityContainer(priority: task.priority!),
+            const SizedBox(width: 10),
             IconButton(
               onPressed: () => GoRouter.of(
                 context,

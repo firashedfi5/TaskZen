@@ -53,7 +53,7 @@ class TaskDetailsScreenBody extends StatelessWidget {
               TaskDetailsUpperSection(
                 title: task.title!,
                 description: task.description!,
-                priority: task.priority!,
+                status: task.status!,
               ),
               const SizedBox(height: 8),
               TaskDetailsBottomSection(
