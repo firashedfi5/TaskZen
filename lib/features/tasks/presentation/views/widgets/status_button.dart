@@ -21,7 +21,10 @@ class StatusButton extends StatelessWidget {
           margin: const EdgeInsets.only(right: 0),
           child: PopupMenuButton<String>(
             onSelected: (String newStatus) {
-              context.read<TaskCubit>().updateTaskStatus(task, newStatus);
+              BlocProvider.of<TaskCubit>(
+                context,
+              ).updateTaskStatus(task, newStatus);
+              // context.read<TaskCubit>().updateTaskStatus(task, newStatus);
             },
             itemBuilder: (BuildContext context) => [
               buildStatusMenuItem(

@@ -68,13 +68,12 @@ class TaskCubit extends Cubit<TaskState> {
 
   //* Update status
   Future<void> updateTaskStatus(TaskModel task, String newStatus) async {
-    try {
-      final updatedTask = task.copyWith(status: newStatus);
-      // await taskRepository.updateTask(updatedTask);
-      log(updatedTask.toString());
+    emit(UpdateTaskLoading());
+    final updatedTask = task.copyWith(status: newStatus);
+    var result = await taskRepo.updateTaskStatus(updatedTask);
+    result.fold((failure) => emit(UpdateTaskFailure(failure.message)), (r) {
       emit(TaskStatusUpdated(updatedTask));
-    } catch (e) {
-      // emit(TaskError('Failed to update task status: ${e.toString()}'));
-    }
+      // log(updatedTask.toString());
+    });
   }
 }

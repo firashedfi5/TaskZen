@@ -53,4 +53,20 @@ class TaskRepoImpl implements TaskRepo {
       return left(ServerFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, Unit>> updateTaskStatus(TaskModel task) async {
+    try {
+      await apiService.patch(
+        endPoint: '/tasks/${task.id}/status',
+        status: task.status,
+      );
+      return right(unit);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
+  }
 }

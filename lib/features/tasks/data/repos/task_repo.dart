@@ -15,6 +15,12 @@ abstract class TaskRepo {
     TaskModel task,
     // String userId,
   );
+  
+  //* PUT /tasks/:id
+  Future<Either<Failure, Unit>> updateTaskStatus(
+    TaskModel task,
+    // String userId,
+  );
 
   //* DELETE /tasks/:id
   Future<Either<Failure, Unit>> deleteTask(

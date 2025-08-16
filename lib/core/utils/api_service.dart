@@ -27,6 +27,14 @@ class ApiService {
     return response;
   }
 
+  Future<Response> patch({required String endPoint, String? status}) async {
+    var response = await _dio.patch(
+      '$_baseUrl$endPoint',
+      data: {'status': status},
+    );
+    return response;
+  }
+
   Future<Response> delete({required String endPoint}) async {
     var response = await _dio.delete('$_baseUrl$endPoint');
     return response;
