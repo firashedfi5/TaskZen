@@ -3,9 +3,9 @@
 ## 📱 Screenshots
 
 <!-- Add screenshots of your app here -->
-| Home Screen | Calendar Screen | Task Details Screen | New Task Screen | Update Task Screen
-|-------------|----------------|----------|------------|---------------|
-<img src="assets/screenshots/light_theme/home_screen.png" alt="Home" width="300"/> | <img src="assets/screenshots/light_theme/calendar_screen.png" alt="Calendar" width="300"/> | <img src="assets/screenshots/light_theme/task_details_screen.png" alt="Task Details" width="300"/> | <img src="assets/screenshots/light_theme/new_task_screen.png" alt="New Task" width="300"/> | <img src="assets/screenshots/light_theme/update_task_screen.png" alt="Update Task" width="300"/>
+| Home Screen | Calendar Screen | Task Details Screen | New Task Screen | Update Task Screen|
+|-------------|-----------------|---------------------|-----------------|-------------------|
+<img src="assets/screenshots/light_theme/home_screen.png" alt="Home" width="300"/> | <img src="assets/screenshots/light_theme/calendar_screen.png" alt="Calendar" width="285"/> | <img src="assets/screenshots/light_theme/task_details_screen.png" alt="Task Details" width="300"/> | <img src="assets/screenshots/light_theme/new_task_screen.png" alt="New Task" width="300"/> | <img src="assets/screenshots/light_theme/update_task_screen.png" alt="Update Task" width="300"/>
 
 ## ✨ Features
 
