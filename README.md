@@ -7,10 +7,23 @@
 
 ## 📱 Screenshots
 
+<table style={border:"none"}>
+   <tr>
+      <td><img src="assets/screenshots/light_theme/home_screen.png" alt="Home Screen" width="500"/></td>
+      <td><img src="assets/screenshots/light_theme/calendar_screen.png" alt="Calendar Screen" width="500"/></td>
+      <td><img src="assets/screenshots/light_theme/task_details_screen.png" alt="Task Details Screen" width="500"/></td>
+   </tr>
+   <tr>
+      <td><img src="assets/screenshots/light_theme/new_task_screen.png" alt="New Task Screen" width="500"/></td>
+      <td><img src="assets/screenshots/light_theme/update_task_screen.png" alt="Update Task Screen" width="500"/></td>
+   </tr>
+
+</table>
+
 <!-- Add screenshots of your app here -->
-|             |                 |                     |                 |                   |
+<!--|             |                 |                     |                 |                   |
 |-------------|-----------------|---------------------|-----------------|-------------------|
-<img src="assets/screenshots/light_theme/home_screen.png" alt="Home" width="350"/> | <img src="assets/screenshots/light_theme/calendar_screen.png" alt="Calendar" width="350"/> | <img src="assets/screenshots/light_theme/task_details_screen.png" alt="Task Details" width="350"/> | <img src="assets/screenshots/light_theme/new_task_screen.png" alt="New Task" width="350"/> | <img src="assets/screenshots/light_theme/update_task_screen.png" alt="Update Task" width="350"/>
+<img src="assets/screenshots/light_theme/home_screen.png" alt="Home" width="350"/> | <img src="assets/screenshots/light_theme/calendar_screen.png" alt="Calendar" width="350"/> | <img src="assets/screenshots/light_theme/task_details_screen.png" alt="Task Details" width="350"/> | <img src="assets/screenshots/light_theme/new_task_screen.png" alt="New Task" width="350"/> | <img src="assets/screenshots/light_theme/update_task_screen.png" alt="Update Task" width="350"/>-->
 
 ## ✨ Features
 
