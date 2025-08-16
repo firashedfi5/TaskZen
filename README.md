@@ -157,7 +157,7 @@ This project follows the [Dart Style Guide](https://dart.dev/guides/language/eff
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
 
 <!--## 👥 Authors
 
