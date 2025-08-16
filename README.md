@@ -29,8 +29,7 @@
 
 - **Task Management**: Create, read, update, and delete tasks with ease
 - **Task Status Filtering**: Filter tasks by status (To Do, In Progress, Completed) using filter chips
-- **Interactive Calendar**: View task count for each day with visual indicators
-- **Day-specific Tasks**: Click on any calendar day to see all tasks for that date
+- **Interactive Calendar**: View task count for each day with visual indicators and click on any day to see specific tasks
 - **Cross-platform**: Works on both iOS and Android
 - **Responsive Design**: Adapts to different screen sizes
 <!--- **Offline Support**: Works without internet connection-->
