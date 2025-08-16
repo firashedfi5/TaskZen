@@ -52,4 +52,33 @@ class TaskModel {
       'status': status,
     };
   }
+
+  TaskModel copyWith({
+    int? id,
+    String? userId,
+    String? title,
+    String? description,
+    String? priority,
+    String? status,
+    DateTime? date,
+    TimeOfDay? startTime,
+    TimeOfDay? endTime,
+  }) {
+    return TaskModel(
+      id: id ?? this.id,
+      userId: userId ?? this.userId,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      priority: priority ?? this.priority,
+      status: status ?? this.status,
+      date: date ?? this.date,
+      startTime: startTime ?? this.startTime,
+      endTime: endTime ?? this.endTime,
+    );
+  }
+
+  @override
+  String toString() {
+    return 'TaskModel(id: $id, \nuserId: $userId, \ntitle: $title, \ndescription: $description, \npriority: $priority, \nstatus: $status, \ndate: $date, \nstartTime: $startTime, \nendTime: $endTime)';
+  }
 }

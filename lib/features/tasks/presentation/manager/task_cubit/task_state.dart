@@ -53,3 +53,10 @@ final class DeleteTaskFailure extends TaskState {
 
   DeleteTaskFailure(this.errMessage);
 }
+
+//* Update status
+class TaskStatusUpdated extends TaskState {
+  final TaskModel task;
+
+  TaskStatusUpdated(this.task);
+}

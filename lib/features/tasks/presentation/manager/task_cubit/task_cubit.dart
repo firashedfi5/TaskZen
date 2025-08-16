@@ -29,6 +29,7 @@ class TaskCubit extends Cubit<TaskState> {
     });
   }
 
+  //* Initilization methods
   void initializeWithTask(TaskModel task) {
     id = task.id!;
     userId = task.userId!;
@@ -63,5 +64,17 @@ class TaskCubit extends Cubit<TaskState> {
       emit(DeleteTaskSuccess('Task deleted successfully'));
       log('Task deleted successfully ✓');
     });
+  }
+
+  //* Update status
+  Future<void> updateTaskStatus(TaskModel task, String newStatus) async {
+    try {
+      final updatedTask = task.copyWith(status: newStatus);
+      // await taskRepository.updateTask(updatedTask);
+      log(updatedTask.toString());
+      emit(TaskStatusUpdated(updatedTask));
+    } catch (e) {
+      // emit(TaskError('Failed to update task status: ${e.toString()}'));
+    }
   }
 }

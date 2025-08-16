@@ -50,11 +50,7 @@ class TaskDetailsScreenBody extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              TaskDetailsUpperSection(
-                title: task.title!,
-                description: task.description!,
-                status: task.status!,
-              ),
+              TaskDetailsUpperSection(task: task),
               const SizedBox(height: 8),
               TaskDetailsBottomSection(
                 date: task.date!,

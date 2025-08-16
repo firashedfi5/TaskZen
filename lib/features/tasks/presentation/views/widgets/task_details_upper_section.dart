@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:task_management_app/core/constants.dart';
+import 'package:task_management_app/features/tasks/data/models/task_model.dart';
 import 'package:task_management_app/features/tasks/presentation/views/widgets/task_details_description_section.dart';
 import 'package:task_management_app/features/tasks/presentation/views/widgets/task_details_description_text.dart';
 import 'package:task_management_app/features/tasks/presentation/views/widgets/task_details_header.dart';
 
 class TaskDetailsUpperSection extends StatelessWidget {
-  const TaskDetailsUpperSection({
-    super.key,
-    required this.title,
-    required this.description,
-    required this.status,
-  });
+  const TaskDetailsUpperSection({super.key, required this.task});
 
-  final String title;
-  final String description;
-  final String status;
+  final TaskModel task;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +36,7 @@ class TaskDetailsUpperSection extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Header(title: title, status: status),
+                Header(task: task),
 
                 const SizedBox(height: 16),
 
@@ -67,7 +61,7 @@ class TaskDetailsUpperSection extends StatelessWidget {
                 const SizedBox(height: 8),
 
                 // Description text in scrollable container
-                TaskDetailsDescriptionText(description: description),
+                TaskDetailsDescriptionText(description: task.description!),
               ],
             ),
           ),
