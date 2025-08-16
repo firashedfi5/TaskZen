@@ -29,7 +29,6 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.8
-  curved_navigation_bar: ^1.0.6
   dartz: ^0.10.1
   dio: ^5.8.0+1
   flutter:
