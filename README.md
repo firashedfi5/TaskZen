@@ -1,4 +1,9 @@
-# TaskZen
+<div align="center">
+<h1>TaskZen</h1>
+</div>
+<div align="center">
+   <img src="assets/logo/TaskZen_logo.png" alt="Home" width="300"/>
+</div>
 
 ## 📱 Screenshots
 
@@ -9,12 +14,13 @@
 
 ## ✨ Features
 
-- **Feature 1**: Description of the main feature
-- **Feature 2**: Another important feature
-- **Feature 3**: Additional functionality
+- **Task Management**: Create, read, update, and delete tasks with ease
+- **Task Status Filtering**: Filter tasks by status (To Do, In Progress, Completed) using filter chips
+- **Interactive Calendar**: View task count for each day with visual indicators
+- **Day-specific Tasks**: Click on any calendar day to see all tasks for that date
 - **Cross-platform**: Works on both iOS and Android
 - **Responsive Design**: Adapts to different screen sizes
-- **Offline Support**: Works without internet connection (if applicable)
+<!--- **Offline Support**: Works without internet connection-->
 
 ## 🚀 Getting Started
 
@@ -31,8 +37,8 @@ Before running this project, make sure you have the following installed:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/your-app-name.git
-   cd your-app-name
+   git clone https://github.com/yourusername/TaskZen.git
+   cd TaskZen
    ```
 
 2. **Install dependencies**
@@ -44,6 +50,8 @@ Before running this project, make sure you have the following installed:
    ```bash
    flutter run
    ```
+
+
 
 ### Platform-specific Setup
 
@@ -61,28 +69,37 @@ Before running this project, make sure you have the following installed:
 
 ```
 lib/
-├── main.dart                 # App entry point
-├── models/                   # Data models
-├── screens/                  # UI screens
-├── widgets/                  # Reusable widgets
-├── services/                 # API and business logic
-├── utils/                    # Helper functions and constants
-└── providers/                # State management (if using Provider)
+├── main.dart                          # 🚀 App entry point and initialization
+├── core/                              # 🏛️ Core functionality and shared components
+└── features/                          # 📱 Feature-based architecture
+    └── feature_1/                   
+        ├── data/                      # 💾 Data layer
+        │   ├── models/                # 📊 Models
+        │   └── repositories/          # 📚 Repository implementations
+        └── presentation/              # 🎭 UI layer
+            ├── manager/               # 🎛️ state management (BLoC/Cubit)
+            └── views/                 # 👀 Screens and widgets
 ```
 
 ## 📦 Dependencies
 
 ### Main Dependencies
-- `flutter/material.dart` - Material Design components
-- `http` - HTTP requests
-- `shared_preferences` - Local storage
-- `provider` - State management
-- `flutter_bloc` - State management (alternative)
+- `flutter/material.dart` - Material Design components and widgets
+- `dartz` - Functional programming utilities (Either, Option types)
+- `dio` - Powerful HTTP client for API requests and interceptors
+- `flutter_bloc` - State management using BLoC pattern
+- `go_router` - Declarative routing and navigation
+- `google_nav_bar` - Animated bottom navigation bar with Google style
+- `shared_preferences` - Local key-value storage for app preferences
+- `skeletonizer` - Loading skeleton animations for better UX
+- `table_calendar` - Customizable calendar widget with events support
+- `flutter_native_splash` - Create native splash screens for iOS and Android
 
 ### Dev Dependencies
-- `flutter_test` - Testing framework
-- `flutter_lints` - Linting rules
-- `mockito` - Mocking for tests
+- `flutter_test` - Built-in testing framework for unit and widget tests
+- `flutter_lints` - Official Dart linting rules for code quality
+- `flutter_launcher_icons` - Generate app launcher icons for all platforms
+- `mockito` - Mock objects for unit testing and dependency isolation
 
 ## 🧪 Testing
 
@@ -98,23 +115,6 @@ flutter test --coverage
 # Run integration tests
 flutter drive --target=test_driver/app.dart
 ```
-
-## 🔧 Configuration
-
-### Environment Variables
-
-Create a `.env` file in the root directory:
-
-```env
-API_BASE_URL=https://your-api-url.com
-API_KEY=your-api-key
-```
-
-### Firebase Setup (if applicable)
-
-1. Add your `google-services.json` (Android) to `android/app/`
-2. Add your `GoogleService-Info.plist` (iOS) to `ios/Runner/`
-3. Initialize Firebase in `main.dart`
 
 ## 🚀 Building for Production
 
@@ -133,6 +133,12 @@ flutter build appbundle --release
 flutter build ios --release
 ```
 
+## 🔗 Backend
+This app connects to a Node.js backend API. You can find the backend repository here:
+- **Repository**: [TaksZen Backend Repo](https://github.com/yourusername/your-backend-repo)
+- **Technology**: Node.js
+- **Documentation**: API documentation available in the backend repo
+
 ## 🤝 Contributing
 
 1. Fork the project
@@ -141,19 +147,19 @@ flutter build ios --release
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-### Code Style
+<!--### Code Style
 
 This project follows the [Dart Style Guide](https://dart.dev/guides/language/effective-dart/style). Make sure to:
 
 - Run `dart format .` before committing
 - Follow the linting rules defined in `analysis_options.yaml`
-- Write meaningful commit messages
+- Write meaningful commit messages-->
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👥 Authors
+<!--## 👥 Authors
 
 - **Your Name** - *Initial work* - [YourGitHub](https://github.com/yourusername)
 
@@ -161,15 +167,15 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Flutter team for the amazing framework
 - [Package Name] for [specific functionality]
-- Community contributors and testers
+- Community contributors and testers-->
 
 ## 📞 Support
 
 If you have any questions or need help, please:
 
-1. Check the [Issues](https://github.com/yourusername/your-app-name/issues) page
+1. Check the [Issues](https://github.com/firashedfi5/TaskZen/issues) page
 2. Create a new issue if your problem isn't already reported
-3. Contact us at: your-email@example.com
+3. Contact me at: firashedfi4@gmail.com
 
 ## 🔄 Changelog
 
