@@ -84,7 +84,7 @@ lib/
 ├── main.dart                          # 🚀 App entry point and initialization
 ├── core/                              # 🏛️ Core functionality and shared components
 └── features/                          # 📱 Feature-based architecture
-    └── feature_1/                   
+    └── feature/                   
         ├── data/                      # 💾 Data layer
         │   ├── models/                # 📊 Models
         │   └── repositories/          # 📚 Repository implementations
