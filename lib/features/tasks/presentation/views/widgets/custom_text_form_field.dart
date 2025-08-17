@@ -38,7 +38,7 @@ class CustomTextFormField extends StatelessWidget {
         ),
       ),
       maxLines: maxLines,
-      maxLength: name == 'Description' ? 150 : 35,
+      maxLength: name == 'Description' ? 200 : 50,
     );
   }
 }
