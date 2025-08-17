@@ -7,17 +7,29 @@
 
 ## 📱 Screenshots
 
+<table style={border:"none"}>
+   <tr>
+      <td><img src="assets/screenshots/light_theme/home_screen.png" alt="Home Screen" width="500"/></td>
+      <td><img src="assets/screenshots/light_theme/calendar_screen.png" alt="Calendar Screen" width="500"/></td>
+      <td><img src="assets/screenshots/light_theme/task_details_screen.png" alt="Task Details Screen" width="500"/></td>
+   </tr>
+   <tr>
+      <td><img src="assets/screenshots/light_theme/new_task_screen.png" alt="New Task Screen" width="500"/></td>
+      <td><img src="assets/screenshots/light_theme/update_task_screen.png" alt="Update Task Screen" width="500"/></td>
+   </tr>
+
+</table>
+
 <!-- Add screenshots of your app here -->
-| Home Screen | Calendar Screen | Task Details Screen | New Task Screen | Update Task Screen|
+<!--|             |                 |                     |                 |                   |
 |-------------|-----------------|---------------------|-----------------|-------------------|
-<img src="assets/screenshots/light_theme/home_screen.png" alt="Home" width="300"/> | <img src="assets/screenshots/light_theme/calendar_screen.png" alt="Calendar" width="285"/> | <img src="assets/screenshots/light_theme/task_details_screen.png" alt="Task Details" width="300"/> | <img src="assets/screenshots/light_theme/new_task_screen.png" alt="New Task" width="300"/> | <img src="assets/screenshots/light_theme/update_task_screen.png" alt="Update Task" width="300"/>
+<img src="assets/screenshots/light_theme/home_screen.png" alt="Home" width="350"/> | <img src="assets/screenshots/light_theme/calendar_screen.png" alt="Calendar" width="350"/> | <img src="assets/screenshots/light_theme/task_details_screen.png" alt="Task Details" width="350"/> | <img src="assets/screenshots/light_theme/new_task_screen.png" alt="New Task" width="350"/> | <img src="assets/screenshots/light_theme/update_task_screen.png" alt="Update Task" width="350"/>-->
 
 ## ✨ Features
 
 - **Task Management**: Create, read, update, and delete tasks with ease
 - **Task Status Filtering**: Filter tasks by status (To Do, In Progress, Completed) using filter chips
-- **Interactive Calendar**: View task count for each day with visual indicators
-- **Day-specific Tasks**: Click on any calendar day to see all tasks for that date
+- **Interactive Calendar**: View task count for each day with visual indicators and click on any day to see specific tasks
 - **Cross-platform**: Works on both iOS and Android
 - **Responsive Design**: Adapts to different screen sizes
 <!--- **Offline Support**: Works without internet connection-->
@@ -72,7 +84,7 @@ lib/
 ├── main.dart                          # 🚀 App entry point and initialization
 ├── core/                              # 🏛️ Core functionality and shared components
 └── features/                          # 📱 Feature-based architecture
-    └── feature_1/                   
+    └── feature/                   
         ├── data/                      # 💾 Data layer
         │   ├── models/                # 📊 Models
         │   └── repositories/          # 📚 Repository implementations
@@ -157,7 +169,7 @@ This project follows the [Dart Style Guide](https://dart.dev/guides/language/eff
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
 
 <!--## 👥 Authors
 
