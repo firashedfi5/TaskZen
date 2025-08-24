@@ -147,7 +147,7 @@ flutter build ios --release
 
 ## 🔗 Backend
 This app connects to a Node.js backend API. You can find the backend repository here:
-- **Repository**: [TaksZen Backend Repo](https://github.com/yourusername/your-backend-repo)
+- **Repository**: [TaksZen Backend Repo](https://github.com/firashedfi5/TaskZen-Backend)
 - **Technology**: Node.js
 [comment]: <> (- **Documentation**: API documentation available in the backend repo)
 
