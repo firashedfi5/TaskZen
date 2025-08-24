@@ -9,13 +9,13 @@
 
 <table style={border:"none"}>
    <tr>
-      <td><img src="assets/screenshots/light_theme/home_screen.png" alt="Home Screen" width="500"/></td>
-      <td><img src="assets/screenshots/light_theme/calendar_screen.png" alt="Calendar Screen" width="500"/></td>
-      <td><img src="assets/screenshots/light_theme/task_details_screen.png" alt="Task Details Screen" width="500"/></td>
+      <td><img src="assets/screenshots/light_theme/home_screen.png" alt="Home Screen" width="300"/></td>
+      <td><img src="assets/screenshots/light_theme/calendar_screen.png" alt="Calendar Screen" width="300"/></td>
+      <td><img src="assets/screenshots/light_theme/task_details_screen.png" alt="Task Details Screen" width="300"/></td>
    </tr>
    <tr>
-      <td><img src="assets/screenshots/light_theme/new_task_screen.png" alt="New Task Screen" width="500"/></td>
-      <td><img src="assets/screenshots/light_theme/update_task_screen.png" alt="Update Task Screen" width="500"/></td>
+      <td><img src="assets/screenshots/light_theme/new_task_screen.png" alt="New Task Screen" width="300"/></td>
+      <td><img src="assets/screenshots/light_theme/update_task_screen.png" alt="Update Task Screen" width="300"/></td>
    </tr>
 
 </table>
@@ -149,7 +149,7 @@ flutter build ios --release
 This app connects to a Node.js backend API. You can find the backend repository here:
 - **Repository**: [TaksZen Backend Repo](https://github.com/yourusername/your-backend-repo)
 - **Technology**: Node.js
-- **Documentation**: API documentation available in the backend repo
+[comment]: <> (- **Documentation**: API documentation available in the backend repo)
 
 ## 🤝 Contributing
 
@@ -159,27 +159,9 @@ This app connects to a Node.js backend API. You can find the backend repository 
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<!--### Code Style
-
-This project follows the [Dart Style Guide](https://dart.dev/guides/language/effective-dart/style). Make sure to:
-
-- Run `dart format .` before committing
-- Follow the linting rules defined in `analysis_options.yaml`
-- Write meaningful commit messages-->
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
-
-<!--## 👥 Authors
-
-- **Your Name** - *Initial work* - [YourGitHub](https://github.com/yourusername)
-
-## 🙏 Acknowledgments
-
-- Flutter team for the amazing framework
-- [Package Name] for [specific functionality]
-- Community contributors and testers-->
 
 ## 📞 Support
 
