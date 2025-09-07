@@ -49,7 +49,7 @@ Before running this project, make sure you have the following installed:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/TaskZen.git
+   git clone https://github.com/firashedfi5/TaskZen.git
    cd TaskZen
    ```
 
