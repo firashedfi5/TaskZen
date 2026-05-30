@@ -2,7 +2,7 @@
 
 <br>
 
-<img src="assets/logo/taskzen_readme_logo.png" width="140" style="border-radius: 16px;"/>
+<img src="assets/logo/taskzen.png" width="140" style="border-radius: 16px;"/>
 
 # TaskZen
 
