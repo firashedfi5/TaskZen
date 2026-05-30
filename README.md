@@ -2,7 +2,7 @@
 
 <br>
 
-<img src="assets/logo/TaskZen_logo.png" width="140"/>
+<img src="assets/logo/AppIcon~ios-marketing.png" width="140" style="border-radius: 16px;"/>
 
 # TaskZen
 
